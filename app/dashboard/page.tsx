@@ -1,10 +1,15 @@
 import React from "react";
+import Menu from "../components/menu";
+import Generator from "../components/generator";
 
 const Page = () => {
   return (
     <div>
-      <div className="flex justify-center items-center h-screen bg-[#F8F8FF]">
-        <h1 className="text-4xl font-bold text-[#1C1C1C]">Dashboard</h1>
+      <div className="">
+        <Generator />
+      </div>
+      <div className="">
+        <Menu />
       </div>
     </div>
   );

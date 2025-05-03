@@ -5,7 +5,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between items-center bg-white/20 p-3 md:w-4/5  backdrop-blur-md sticky top-0 w-10/12 mx-auto rounded-2xl border border-black/40  mt-2 ">
+    <div className="flex justify-between items-center bg-white/20 p-3 md:w-4/5  backdrop-blur-md sticky top-0 w-10/12 mx-auto rounded-2xl border border-black/40  mt-2 z-40 ">
       <div className="text-xl font-semibold">WishCube</div>
       <SignInButton mode="modal">
         <button className="bg-[#1C1C1C] cursor-pointer text-[#F8F8FF] py-2 px-3 rounded-xl hover:bg-[#2C2C2C] transition duration-300 ease-in-out">
