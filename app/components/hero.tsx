@@ -6,7 +6,7 @@ import Image from "next/image";
 const Hero = () => {
   return (
     <div>
-      <div className="">
+      <div className=" h-[70vh] flex flex-col justify-center items-center p-4 bg-[#F8F8FF]">
         <span></span>
         <h2 className=" text-4xl md:text-5xl font-bold text-center mt-10 mb-5 leading- text-[#1C1C1C]">
           A Universe of Greetings, Gifts & Virtual Celebrations

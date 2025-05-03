@@ -5,10 +5,10 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between items-center bg-white p-3 md:w-full w-11/12 mx-auto md:rounded-none rounded-2xl border border-black/40 md:border-0 mt-2 shadow-md">
+    <div className="flex justify-between items-center bg-white/20 p-3 md:w-4/5  backdrop-blur-md sticky top-0 w-10/12 mx-auto rounded-2xl border border-black/40  mt-2 ">
       <div className="text-xl font-semibold">WishCube</div>
       <SignInButton mode="modal">
-        <button className="bg-[#1C1C1C] text-[#F8F8FF] py-2 px-3 rounded-xl hover:bg-[#2C2C2C] transition duration-300 ease-in-out">
+        <button className="bg-[#1C1C1C] cursor-pointer text-[#F8F8FF] py-2 px-3 rounded-xl hover:bg-[#2C2C2C] transition duration-300 ease-in-out">
           Get Started
         </button>
       </SignInButton>
