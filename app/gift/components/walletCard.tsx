@@ -19,6 +19,7 @@ const WalletCard = () => {
         <h2 className="text-lg font-semibold text-gray-200">Wallet Card</h2>
 
         <div className="flex flex-col gap-4">
+          {/* Balance */}
           <div className="flex items-center justify-between p-4 bg-gray-200 rounded-lg">
             <span className="text-sm font-medium text-gray-700">Balance</span>
             <div className="flex items-center gap-3.5">
@@ -38,6 +39,7 @@ const WalletCard = () => {
             </div>
           </div>
 
+          {/* Gifting Point Balance */}
           <div className="flex items-center justify-between p-4 bg-gray-200 rounded-lg">
             <span className="text-sm font-medium text-gray-700">
               Gifting Point Balance
@@ -60,33 +62,42 @@ const WalletCard = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-5 justify-center pt-4">
-          <div className="bg-gray-200 rounded-lg px-4 flex flex-col items-center w-1/6 py-2.5">
-            <span className="font-medium text-gray-700 bg-gray-400 p-1 rounded-full flex items-center justify-center h-10 w-10 cursor-pointer hover:bg-gray-400 transition duration-200">
-              <SlWallet className="size-4" />
-            </span>
-            <span className="text-sm mt-2 whitespace-nowrap">Fund Wallet</span>
-          </div>
-          <div className="bg-gray-200 rounded-lg px-2 flex flex-col items-center w-1/6 py-2.5">
-            <Link href="/buy">
-              <span className="font-medium text-gray-700 bg-gray-400 p-1 rounded-full flex items-center justify-center h-10 w-10 cursor-pointer hover:bg-gray-400 transition duration-200">
-                <GoArrowSwitch className="size-4" />
+        {/* CTA Buttons (Grid Layout) */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
+          {/* Fund Wallet */}
+          <div className="bg-gray-200 rounded-lg px-4 py-2.5 flex flex-col items-center">
+            <Link href="/fundWallet">
+              <span className="font-medium text-gray-700 bg-gray-400 p-1 rounded-full flex items-center justify-center h-10 w-10 cursor-pointer hover:bg-gray-500 transition duration-200">
+                <SlWallet className="size-4" />
               </span>
-              <span className="text-sm mt-2 whitespace-nowrap">Buy Gift</span>
             </Link>
-          </div>
-          <div className="bg-gray-200 rounded-lg px-2 flex flex-col items-center w-1/6 py-2.5">
-            <span className="font-medium text-gray-700 bg-gray-400 p-1 rounded-full flex items-center justify-center h-10 w-10 cursor-pointer hover:bg-gray-400 transition duration-200">
-              <GoArrowDownLeft className="size-4" />
-            </span>
-            <span className="text-sm mt-2 whitespace-nowrap">Receive Gift</span>
+            <span className="text-sm mt-2">Fund Wallet</span>
           </div>
 
-          <div className="bg-gray-200 rounded-lg px-2 flex flex-col items-center w-1/6 py-2.5">
-            <span className="font-medium text-gray-700 bg-gray-400 p-1 rounded-full flex items-center justify-center h-10 w-10 cursor-pointer hover:bg-gray-400 transition duration-200">
+          {/* Buy Gift */}
+          <div className="bg-gray-200 rounded-lg px-4 py-2.5 flex flex-col items-center">
+            <Link href="/buy">
+              <span className="font-medium text-gray-700 bg-gray-400 p-1 rounded-full flex items-center justify-center h-10 w-10 cursor-pointer hover:bg-gray-500 transition duration-200">
+                <GoArrowSwitch className="size-4" />
+              </span>
+            </Link>
+            <span className="text-sm mt-2">Buy Gift</span>
+          </div>
+
+          {/* Receive Gift */}
+          <div className="bg-gray-200 rounded-lg px-4 py-2.5 flex flex-col items-center">
+            <span className="font-medium text-gray-700 bg-gray-400 p-1 rounded-full flex items-center justify-center h-10 w-10 cursor-pointer hover:bg-gray-500 transition duration-200">
+              <GoArrowDownLeft className="size-4" />
+            </span>
+            <span className="text-sm mt-2">Receive Gift</span>
+          </div>
+
+          {/* Give Gift */}
+          <div className="bg-gray-200 rounded-lg px-4 py-2.5 flex flex-col items-center">
+            <span className="font-medium text-gray-700 bg-gray-400 p-1 rounded-full flex items-center justify-center h-10 w-10 cursor-pointer hover:bg-gray-500 transition duration-200">
               <GoArrowDownRight className="size-4" />
             </span>
-            <span className="text-sm mt-2 whitespace-nowrap">Give Gift</span>
+            <span className="text-sm mt-2">Give Gift</span>
           </div>
         </div>
       </div>
