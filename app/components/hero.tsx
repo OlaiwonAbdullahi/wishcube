@@ -1,6 +1,7 @@
 import React from "react";
 import { GoArrowUpRight } from "react-icons/go";
 import { CiLogin } from "react-icons/ci";
+import Image from "next/image";
 
 const Hero = () => {
   return (
@@ -25,7 +26,15 @@ const Hero = () => {
           </button>
         </div>
       </div>
-      <div className=""></div>
+      <div className=" p-4 flex justify-center items-center mt-5 mb-10">
+        <Image
+          width={20}
+          height={0}
+          src="/gift.svg"
+          alt="hero"
+          className="md:w-1/3 w-full sm:w-10/12 h-auto object-cover rounded-lg "
+        />
+      </div>
     </div>
   );
 };
