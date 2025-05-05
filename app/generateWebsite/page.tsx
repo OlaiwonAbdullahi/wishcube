@@ -1,14 +1,12 @@
 import React from "react";
-import WalletCard from "./components/walletCard";
 import Menu from "../ui/menu";
+import Generator from "./components/generator";
 
 const Page = () => {
   return (
     <div>
-      <div className="">
-        <WalletCard />
-        <Menu />
-      </div>
+      <Generator />
+      <Menu />
     </div>
   );
 };

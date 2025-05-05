@@ -1,4 +1,3 @@
-// app/login/page.js
 "use client";
 
 import { signIn } from "next-auth/react";

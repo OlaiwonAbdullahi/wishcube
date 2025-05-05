@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Afacad } from "next/font/google";
 import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
-import Navbar from "./components/navbar";
-import { SessionProvider } from "next-auth/react";
+import Navbar from "./ui/navbar";
 
 const afacad = Afacad({
   variable: "--font-afacad",
@@ -23,13 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en" className={afacad.variable}>
-        <body className="antialiased font-sans bg-white text-gray-900">
-          <Navbar />
-          <SessionProvider>{children}</SessionProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en" className={afacad.variable}>
+      <body className="antialiased font-sans bg-white text-gray-900">
+        <Navbar />
+        {children}
+      </body>
+    </html>
   );
 }

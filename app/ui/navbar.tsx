@@ -1,6 +1,5 @@
 "use client";
 
-import { SignInButton } from "@clerk/nextjs";
 import Link from "next/link";
 import React from "react";
 
@@ -10,11 +9,10 @@ const Navbar = () => {
       <Link href={"/dashboard"} className="flex items-center gap-2">
         <div className="text-xl font-semibold">WishCube</div>
       </Link>
-      <SignInButton mode="modal">
-        <button className="bg-[#1C1C1C] cursor-pointer text-[#F8F8FF] py-2 px-3 rounded-xl hover:bg-[#2C2C2C] transition duration-300 ease-in-out">
-          Get Started
-        </button>
-      </SignInButton>
+
+      <button className="bg-[#1C1C1C] cursor-pointer text-[#F8F8FF] py-2 px-3 rounded-xl hover:bg-[#2C2C2C] transition duration-300 ease-in-out">
+        Get Started
+      </button>
     </div>
   );
 };

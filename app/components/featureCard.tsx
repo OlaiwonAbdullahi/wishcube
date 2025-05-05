@@ -14,7 +14,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
 }) => {
   return (
     <div>
-      <div className="gap-2.5 border md:h-72 h-80  border-black/30 mx-2.5 p-3.5 flex flex-col justify-start rounded-2xl items-start mt-5 mb-10">
+      <div className="gap-2.5 border md:h-72 sm:h-56 h-80  border-black/30 mx-2.5 p-3.5 flex flex-col justify-start rounded-2xl items-start mt-5 mb-10">
         <span className="">{icon}</span>
         <h2 className="text-2xl font-medium">{title}</h2>
         <p className="text-gray-600 mb-1">{description}</p>
