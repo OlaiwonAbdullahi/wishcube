@@ -1,6 +1,8 @@
+import Markdown from "react-markdown";
+
 const MessageList = ({ messages }) => {
   return (
-    <div className="message-list flex flex-col p-4 overflow-y-auto h-[calc(100vh-120px)]">
+    <div className="flex flex-col p-4 overflow-y-auto  w-10/12 mx-auto">
       {messages.map((message, index) => (
         <div
           key={index}
@@ -10,9 +12,17 @@ const MessageList = ({ messages }) => {
               : "text-gray-800 bg-[#dfdede] self-start"
           }`}
         >
-          <div className="message-text">{message.text}</div>
+          <div className="message-text prose max-w-none">
+            <Markdown>{message.text}</Markdown>
+          </div>
           <div className="message-sender text-sm italic">
             - {message.sender}
+          </div>
+          <div className="message-time text-xs text-gray-500">
+            {new Date().toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
           </div>
         </div>
       ))}
