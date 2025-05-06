@@ -3,47 +3,74 @@ import React, { useState } from "react";
 import Chatinput from "./components/chatinput";
 import MessageList from "./components/messageList";
 
-const Page = () => {
-  const [messages, setMessages] = useState([]);
+export type Message = {
+  text: string;
+  sender: string;
+  temp?: boolean;
+};
 
-  const handleSendMessage = async (text) => {
-    const userMessage = { text, sender: "You" };
+const Page: React.FC = () => {
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [isTyping, setIsTyping] = useState(false);
+
+  const handleSendMessage = async (text: string) => {
+    const userMessage: Message = { text, sender: "You" };
     setMessages((prev) => [...prev, userMessage]);
 
+    setIsTyping(true);
+    setMessages((prev) => [
+      ...prev,
+      { text: "Typing...", sender: "WishCube AI", temp: true },
+    ]);
+
+    const fullMessages = [
+      {
+        role: "system",
+        content:
+          "You are WishCube AI, a cheerful and helpful assistant for digital greeting cards and event planning.",
+      },
+      ...messages
+        .filter((msg) => !msg.temp)
+        .map((msg) => ({
+          role: msg.sender === "You" ? "user" : "assistant",
+          content: msg.text,
+        })),
+      { role: "user", content: text },
+    ];
+
     try {
-      const response = await fetch("https://ai.hackclub.com/chat/completions", {
+      const res = await fetch("https://ai.hackclub.com/chat/completions", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          messages: [{ role: "user", content: text }],
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: fullMessages }),
       });
+      const data = await res.json();
+      const aiText = data.choices[0].message.content as string;
 
-      const data = await response.json();
-      const aiText = data.choices[0].message.content;
-
-      const aiMessage = {
-        text: aiText,
+      const aiMessage: Message = {
+        text: `💬 ${aiText}`,
         sender: "WishCube AI",
       };
 
-      setMessages((prev) => [...prev, aiMessage]);
-    } catch (error) {
-      console.error("AI response error:", error);
-      const errorMessage = {
-        text: "Sorry, something went wrong with the AI response.",
-        sender: "System",
-      };
-      setMessages((prev) => [...prev, errorMessage]);
+      setMessages((prev) => [...prev.filter((m) => !m.temp), aiMessage]);
+    } catch (err) {
+      console.error(err);
+      setMessages((prev) => [
+        ...prev.filter((m) => !m.temp),
+        {
+          text: "❌ Oops! Something went wrong with the AI response.",
+          sender: "System",
+        },
+      ]);
+    } finally {
+      setIsTyping(false);
     }
   };
 
   return (
-    <div>
+    <div className="min-h-screen bg-gray-100 p-4 flex flex-col">
       <MessageList messages={messages} />
-      <Chatinput onSendMessage={handleSendMessage} />
+      <Chatinput onSendMessage={handleSendMessage} isTyping={isTyping} />
     </div>
   );
 };
