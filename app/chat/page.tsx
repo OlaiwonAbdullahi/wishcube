@@ -7,7 +7,7 @@ const Page = () => {
   const [messages, setMessages] = useState([]);
 
   const handleSendMessage = async (text) => {
-    const userMessage = { text, sender: "User" };
+    const userMessage = { text, sender: "You" };
     setMessages((prev) => [...prev, userMessage]);
 
     try {
@@ -26,7 +26,7 @@ const Page = () => {
 
       const aiMessage = {
         text: aiText,
-        sender: "AI",
+        sender: "WishCube AI",
       };
 
       setMessages((prev) => [...prev, aiMessage]);
