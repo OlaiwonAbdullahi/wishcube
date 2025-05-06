@@ -1,9 +1,11 @@
 "use client";
 import React from "react";
 import { BiCopy } from "react-icons/bi";
-import { CiCreditCard1 } from "react-icons/ci";
+import { CiBitcoin, CiCreditCard1 } from "react-icons/ci";
 import { IoRocketOutline } from "react-icons/io5";
 import toast, { Toaster } from "react-hot-toast";
+import { IoIosArrowDropright } from "react-icons/io";
+import Menu from "../ui/menu";
 
 const Page = () => {
   const accountName = "John Doe";
@@ -18,26 +20,45 @@ const Page = () => {
 
   return (
     <div className="flex flex-col gap-4 p-4">
-      <div>
+      <div className="p-6">
         <h2 className="text-2xl font-medium">Fund Wallet</h2>
         <p>Fund your wallet with crypto or fiat.</p>
       </div>
 
       <div className="flex flex-col gap-4 items-center w-full md:w-3/4 mx-auto">
-        <div className="w-1/2 flex items-center gap-2 rounded-lg border bg-gray-200 p-4 shadow-sm transition-all duration-200 hover:shadow-md cursor-pointer">
-          <IoRocketOutline className="size-6" />
-          Fund using Card
+        <div className="w-1/2 flex items-center justify-between gap-2 rounded-lg border bg-gray-200 p-4 shadow-sm transition-all duration-200 hover:shadow-md cursor-pointer">
+          <div className=" flex items-center gap-2">
+            <IoRocketOutline className="size-6" />
+            Fund using Card
+          </div>
+          <div className="">
+            <IoIosArrowDropright className=" size-5" />
+          </div>
         </div>
 
         <div className="w-1/2 border-t border-black/25" />
 
-        <div className="w-1/2 flex items-center gap-2 rounded-lg border bg-gray-200 p-4 shadow-sm transition-all duration-200 hover:shadow-md cursor-pointer">
-          <CiCreditCard1 className="size-6" />
-          Fund using Bank Transfer
+        <div className="w-1/2 flex justify-between items-center gap-2 rounded-lg border bg-gray-200 p-4 shadow-sm transition-all duration-200 hover:shadow-md cursor-pointer">
+          <div className=" flex items-center gap-2">
+            <CiCreditCard1 className="size-6" />
+            Fund using Bank Transfer
+          </div>
+          <div className="">
+            <IoIosArrowDropright className=" size-5" />
+          </div>
         </div>
 
         <div className="w-1/2 border-t border-black/25" />
-
+        <div className="w-1/2 justify-between flex items-center gap-2 rounded-lg border bg-gray-200 p-4 shadow-sm transition-all duration-200 hover:shadow-md cursor-pointer">
+          <div className=" flex items-center gap-2">
+            <CiBitcoin className="size-6" />
+            Fund using Crypto
+          </div>
+          <div className="">
+            <IoIosArrowDropright className=" size-5" />
+          </div>
+        </div>
+        <div className="w-1/2 border-t border-black/25" />
         <div className="w-1/2">
           <span className="font-medium">Pay With Transfer</span>
           <p className="text-sm text-gray-500 mb-2">
@@ -92,6 +113,7 @@ const Page = () => {
       </div>
 
       <Toaster />
+      <Menu />
     </div>
   );
 };

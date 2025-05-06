@@ -169,11 +169,11 @@ const Generator = () => {
           className="rounded-md w-full max-w-[400px]"
         />
         <div className=" flex flex-col gap-4 w-2/3 mt-4">
-          <button className=" whitespace-nowrap cursor-pointer flex items-center justify-center gap-2.5 bg-[#8c52ff] text-gray-100  p-2 rounded-md  w-full hover:bg-violet-700 transition duration-200">
+          <button className=" whitespace-nowrap cursor-pointer flex items-center justify-center gap-2.5 bg-[#1c1c1c] text-gray-100  p-2 rounded-md  w-full hover:bg-[#1c1c1c] transition duration-200">
             <IoCopyOutline className=" size-6" />
             Copy Greeting Link
           </button>
-          <button className=" whitespace-nowrap  cursor-pointer flex items-center justify-center gap-2.5 border-[#8c52ff] text-[#8c52ff] bg-gray-100  border p-2 rounded-md  w-full hover:bg-violet-200 transition duration-200">
+          <button className=" whitespace-nowrap  cursor-pointer flex items-center justify-center gap-2.5 border-[#1c1c1c] text-[#1c1c1c] bg-gray-100  border p-2 rounded-md  w-full hover:bg-violet-200 transition duration-200">
             <CiShare2 className=" size-6" />
             Share on Social Media
           </button>
