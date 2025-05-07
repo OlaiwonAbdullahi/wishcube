@@ -5,6 +5,8 @@ import { CiShare2 } from "react-icons/ci";
 import { IoCloudUploadOutline, IoCopyOutline } from "react-icons/io5";
 import AiSugestion from "./aiSugestion";
 import VoiceMessage from "./voiceMessage";
+import { BiHeart } from "react-icons/bi";
+import { CgMenuRound } from "react-icons/cg";
 
 const Generator = () => {
   const [name, setName] = useState("");
@@ -161,13 +163,27 @@ const Generator = () => {
         <h2 className="text-lg font-semibold text-gray-800  self-start">
           Preview
         </h2>
-        <Image
-          src="/card.png"
-          alt="Preview Card"
-          width={500}
-          height={500}
-          className="rounded-md w-full max-w-[400px]"
-        />
+        <div className="w-full flex flex-col space-y-4 items-center text-center">
+          {/* Header with icons and name */}
+          <div className="flex items-center justify-between w-full px-4">
+            <BiHeart className="size-7 " />
+            <span className="text-lg font-medium text-gray-800">{name}</span>
+            <CgMenuRound className="size-7 text-gray-600" />
+          </div>
+
+          <div>
+            <h2 className="text-3xl font-semibold text-violet-700">
+              Hey {name}... 👋
+            </h2>
+          </div>
+
+          <div className="text-base text-gray-500 italic">{message}</div>
+
+          <div className="text-lg text-gray-700 leading-relaxed px-4">
+            {message}
+          </div>
+        </div>
+
         <div className=" flex flex-col gap-4 w-2/3 mt-4">
           <button className=" whitespace-nowrap cursor-pointer flex items-center justify-center gap-2.5 bg-[#1c1c1c] text-gray-100  p-2 rounded-md  w-full hover:bg-[#1c1c1c] transition duration-200">
             <IoCopyOutline className=" size-6" />

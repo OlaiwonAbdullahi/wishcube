@@ -1,28 +1,66 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 
 const AiSugestion = () => {
-  const suggestions = [
-    "Wishing you joy, love, and happiness on this special day. May your celebration be as wonderful as you are!",
-    "Sending warm thoughts and best wishes. May this moment bring peace, laughter, and cherished memories.",
-    "Hope this day brings a smile to your face and joy to your heart. You're truly appreciated and loved.",
-  ];
+  const [aiSuggestion, setAiSuggestion] = useState<string | null>(null);
+
+  const generateAiSuggestion = async () => {
+    const prompt = `
+You are a professional greeting card writer. 
+Please write a heartfelt and personalized greeting for someone named . 
+If relevant, incorporate the following message or sentiment: "Your presence brightens every space". 
+The tone should be warm, sincere, and creative. 
+Keep it concise but meaningful (around 3-5 sentences). 
+Do not include a signature or sender name. Use emojis.
+`;
+
+    try {
+      const response = await fetch("https://ai.hackclub.com/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: [{ role: "user", content: prompt }],
+        }),
+      });
+
+      const data = await response.json();
+      const message = data?.choices?.[0]?.message?.content;
+      setAiSuggestion(message || "No message generated.");
+    } catch (error) {
+      console.error("Failed to generate message:", error);
+      setAiSuggestion("❌ Failed to generate message.");
+    }
+  };
+
+  const handleUseMessage = (message: string) => {
+    navigator.clipboard.writeText(message);
+    alert("Message copied to clipboard!");
+  };
 
   return (
-    <div className="bg-violet-50 rounded-2xl p-6 space-y-4 w-full">
-      <h2 className="text-lg font-semibold text-gray-800">AI Suggestions</h2>
+    <div className="bg-violet-50 rounded-2xl p-6 space-y-6 w-full">
+      <div className="flex justify-between items-center">
+        <h2 className="text-lg font-semibold text-gray-800">AI Suggestions</h2>
+        <button
+          onClick={generateAiSuggestion}
+          className="text-sm text-white bg-gray-600 px-4 py-2 rounded-lg hover:bg-violet-700 transition"
+        >
+          Generate Suggestion
+        </button>
+      </div>
 
       <div className="space-y-4">
-        {suggestions.map((msg, index) => (
-          <div
-            key={index}
-            className="border bg-white border-gray-200 rounded-xl p-4 hover:shadow-md transition duration-300"
-          >
-            <p className="text-gray-700 text-sm mb-2">{msg}</p>
-            <button className="text-[#1C1C1C] text-sm font-medium hover:underline hover:text-violet-700 transition">
+        {aiSuggestion && (
+          <div className="border bg-white border-violet-300 rounded-xl p-4 hover:shadow-md transition duration-300">
+            <p className="text-gray-700 text-sm mb-2">{aiSuggestion}</p>
+            <button
+              onClick={() => handleUseMessage(aiSuggestion)}
+              className="text-[#1C1C1C] text-sm font-medium hover:underline hover:text-violet-700 transition"
+            >
               Use this Message
             </button>
           </div>
-        ))}
+        )}
       </div>
     </div>
   );
