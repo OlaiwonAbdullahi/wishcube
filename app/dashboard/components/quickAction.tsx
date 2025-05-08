@@ -16,7 +16,7 @@ const QuickAction = () => {
         >
           <div className="flex flex-col items-center justify-center bg-gray-300  rounded-xl  text-center ">
             <BsLayoutTextWindow className="size-6 text-[#1C1C1C]" />
-            <span className="leading-5">Create Gifting Website</span>
+            <span className="leading-5">Create Greeting Website</span>
           </div>
         </Link>
 
@@ -26,7 +26,7 @@ const QuickAction = () => {
         >
           <div className="flex flex-col items-center justify-center bg-gray-300 p-4 rounded-xl text-center ">
             <CiReceipt className="size-8 text-[#1C1C1C]" />
-            <span className="leading-5">Create Gifting Card</span>
+            <span className="leading-5">Create Greeting Card</span>
           </div>
         </Link>
 

@@ -55,9 +55,9 @@ Do not include a signature or sender name. Use emojis.
             <p className="text-gray-700 text-sm mb-2">{aiSuggestion}</p>
             <button
               onClick={() => handleUseMessage(aiSuggestion)}
-              className="text-[#1C1C1C] text-sm font-medium hover:underline hover:text-violet-700 transition"
+              className="text-[#1C1C1C] text-right flex justify-end items-end self-end text-sm font-medium hover:underline hover:text-violet-700 transition"
             >
-              Use this Message
+              Copy This Message
             </button>
           </div>
         )}
