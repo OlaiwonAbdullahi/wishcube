@@ -87,8 +87,8 @@ const LoginPage = () => {
                 type="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="you@example.com"
-                className="pl-10 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+                placeholder="Email Address"
+                className="pl-10 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 transition-colors"
                 required
               />
             </div>
@@ -104,7 +104,7 @@ const LoginPage = () => {
               </label>
               <Link
                 href="/forgot-password"
-                className="text-sm text-blue-600 hover:text-blue-500"
+                className="text-sm text-gray-600 hover:text-gray-500"
               >
                 Forgot password?
               </Link>
@@ -120,7 +120,7 @@ const LoginPage = () => {
                 value={formData.password}
                 onChange={handleChange}
                 placeholder="••••••••"
-                className="pl-10 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+                className="pl-10 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 transition-colors"
                 required
               />
               <button
@@ -141,7 +141,7 @@ const LoginPage = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-75 disabled:cursor-not-allowed flex justify-center items-center"
+              className="w-full bg-gray-600 text-white p-3 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors disabled:opacity-75 disabled:cursor-not-allowed flex justify-center items-center"
             >
               {loading ? (
                 <>
@@ -179,7 +179,7 @@ const LoginPage = () => {
             Don&apos;t have an account?{" "}
             <Link
               href="/signup"
-              className="font-medium text-blue-600 hover:text-blue-500 transition-colors"
+              className="font-medium text-gray-600 hover:text-gray-500 transition-colors"
             >
               Create account
             </Link>
