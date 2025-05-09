@@ -4,6 +4,7 @@ import Image from "next/image";
 import { LuHeartHandshake } from "react-icons/lu";
 import { IoSparklesOutline } from "react-icons/io5";
 import { BiRocket } from "react-icons/bi";
+import { useParams } from "next/navigation";
 
 interface GreetingData {
   id: string;
@@ -15,12 +16,10 @@ interface GreetingData {
   gift: string | null;
 }
 
-// This is a client component receiving the id via props from the parent page component
-type GreetingPageProps = {
-  id: string;
-};
+export default function GreetingCard() {
+  const params = useParams();
+  const id = params.id as string;
 
-export default function GreetingCard({ id }: GreetingPageProps) {
   const [greetingData, setGreetingData] = useState<GreetingData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
