@@ -11,13 +11,11 @@ export type Message = {
 
 const Page: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
-  const [isTyping, setIsTyping] = useState(false);
 
   const handleSendMessage = async (text: string) => {
     const userMessage: Message = { text, sender: "You" };
     setMessages((prev) => [...prev, userMessage]);
 
-    setIsTyping(true);
     setMessages((prev) => [
       ...prev,
       { text: "Typing...", sender: "WishCube AI", temp: true },
@@ -63,7 +61,6 @@ const Page: React.FC = () => {
         },
       ]);
     } finally {
-      setIsTyping(false);
     }
   };
 
