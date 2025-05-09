@@ -1,10 +1,14 @@
 "use client";
 import React, { useState } from "react";
 
-const Chatinput = ({ onSendMessage }) => {
+const Chatinput = ({
+  onSendMessage,
+}: {
+  onSendMessage: (message: string) => void;
+}) => {
   const [message, setMessage] = useState("");
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: { target: { value: string } }) => {
     setMessage(e.target.value);
   };
 
