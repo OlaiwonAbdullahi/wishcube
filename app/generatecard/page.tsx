@@ -6,7 +6,11 @@ import { IoCloudDownloadOutline, IoSparklesOutline } from "react-icons/io5";
 import { PiConfettiThin } from "react-icons/pi";
 import Menu from "../ui/menu";
 import { toBlob, toPng } from "html-to-image";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
+import { useRef, useEffect } from "react";
+import { FaStar, FaGift, FaFeatherAlt } from "react-icons/fa";
+import { MdCelebration } from "react-icons/md";
+import { LuSparkles } from "react-icons/lu";
 
 const Page = () => {
   const themes = [
@@ -65,6 +69,23 @@ const Page = () => {
   const [occasion, setOccasion] = useState("");
   const [customMessage, setCustomMessage] = useState("");
   const [selectedTheme, setSelectedTheme] = useState(themes[0]);
+  const [isHovering, setIsHovering] = useState(false);
+  const [animate, setAnimate] = useState(false);
+
+  const cardRef = useRef(null);
+  useEffect(() => {
+    setAnimate(true);
+    const timer = setTimeout(() => setAnimate(false), 700);
+    return () => clearTimeout(timer);
+  }, [selectedTheme]);
+  const decorations = [
+    <LuSparkles key="1" className="text-white/80" />,
+    <FaStar key="2" className="text-white/80" />,
+    <BsBalloonHeart key="3" className="text-white/80" />,
+    <MdCelebration key="4" className="text-white/80" />,
+    <FaGift key="5" className="text-white/80" />,
+    <PiConfettiThin key="6" className="text-white/80" />,
+  ];
 
   const generateMessage = async () => {
     const prompt = `
@@ -92,6 +113,7 @@ Do not include a signature or sender name. use emojies
       );
     } catch (error) {
       console.error("Failed to generate message:", error);
+      toast.error("Failed to generate message:");
     }
   };
   const downloadCard = () => {
@@ -111,6 +133,7 @@ Do not include a signature or sender name. use emojies
         })
         .catch((error) => {
           console.error("Download failed:", error);
+          toast.error("Download failed:");
         });
     }, 300);
   };
@@ -148,6 +171,7 @@ Do not include a signature or sender name. use emojies
   };
   return (
     <div className="flex flex-col p-6 pb-15">
+      <Toaster />
       <div className="flex flex-col w-full md:w-1/2 bg-white/10 bg-clip-padding backdrop-filter backdrop-blur-sm border border-black/25 p-6 rounded-2xl space-y-6 mx-auto m-10">
         <div className="flex flex-col self-start text-left">
           <h1 className="text-2xl font-bold text-left">Generate Your Card</h1>
@@ -236,45 +260,132 @@ Do not include a signature or sender name. use emojies
 
       {generatedMessage && (
         <div className="space-y-6">
-          <div className=" space-y-4 mb-3.5" id="GreetingCard">
+          <div
+            id="GreetingCard"
+            ref={cardRef}
+            className={`relative w-full md:w-3/5 mx-auto overflow-hidden ${
+              animate ? "animate-pulse" : ""
+            }`}
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+          >
+            {/* Premium badge */}
+            <div className="absolute top-0 right-0 z-10">
+              <div className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-xl shadow-lg transform -rotate-6">
+                PREMIUM
+              </div>
+            </div>
+
             <div
-              className={`w-full md:w-1/2 bg-gradient-to-r ${selectedTheme.gradient} p-8 rounded-3xl shadow-2xl border border-white/10 mx-auto backdrop-blur-md space-y-8 text-white`}
+              className={`w-full bg-gradient-to-r ${
+                selectedTheme.gradient
+              } p-8 rounded-3xl shadow-2xl border border-white/20 backdrop-blur-md space-y-6 text-white transform transition-all duration-500 ${
+                isHovering ? "scale-[1.01]" : ""
+              }`}
             >
               <div className="flex justify-center gap-6 text-white/70">
-                <IoSparklesOutline className="size-7 hover:text-white transition duration-300" />
-                <BsBalloonHeart className="size-7 hover:text-white transition duration-300" />
-                <BsBalloon className="size-7 hover:text-white transition duration-300" />
-                <PiConfettiThin className="size-7 hover:text-white transition duration-300" />
+                <IoSparklesOutline className="size-7 hover:text-white hover:scale-125 transition duration-300" />
+                <BsBalloonHeart className="size-7 hover:text-white hover:scale-125 transition duration-300" />
+                <BsBalloon className="size-7 hover:text-white hover:scale-125 transition duration-300" />
+                <PiConfettiThin className="size-7 hover:text-white hover:scale-125 transition duration-300" />
+              </div>
+              <div className="absolute top-20 left-10 opacity-20 text-4xl transform -rotate-12">
+                {decorations[0]}
+              </div>
+              <div className="absolute bottom-20 right-10 opacity-20 text-4xl transform rotate-12">
+                {decorations[2]}
+              </div>
+              <div className="relative">
+                <div className="absolute -left-2 top-3 text-5xl text-white/5">
+                  ✦
+                </div>
+                <div className="absolute -right-2 top-3 text-5xl text-white/5">
+                  ✦
+                </div>
+                <h2 className="text-center font-extrabold capitalize tracking-wide py-2">
+                  <span className="block text-sm uppercase tracking-widest mb-1 text-white/80">
+                    Happy
+                  </span>
+                  <span className="text-4xl bg-clip-text bg-gradient-to-b from-white to-white/80 pb-1">
+                    {occasion}
+                  </span>
+                </h2>
+              </div>
+              <div className="flex items-center justify-center">
+                <div className="h-px bg-white/20 w-1/4"></div>
+                <FaFeatherAlt className="mx-4 text-white/40" />
+                <div className="h-px bg-white/20 w-1/4"></div>
               </div>
 
-              {/* Heading */}
-              <h2 className="text-center text-4xl font-extrabold capitalize tracking-wide">
-                {occasion} Greeting Card
-              </h2>
+              <div className="bg-white/10 rounded-xl p-8 text-center space-y-4 shadow-inner relative overflow-hidden backdrop-blur-sm border border-white/20">
+                {/* Subtle background pattern */}
+                <div className="absolute inset-0 opacity-5">
+                  {[...Array(5)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="absolute text-4xl"
+                      style={{
+                        top: `${Math.random() * 100}%`,
+                        left: `${Math.random() * 100}%`,
+                        transform: `rotate(${Math.random() * 360}deg)`,
+                      }}
+                    >
+                      {
+                        decorations[
+                          Math.floor(Math.random() * decorations.length)
+                        ]
+                      }
+                    </div>
+                  ))}
+                </div>
 
-              {/* Message */}
-              <div className="bg-white/10 rounded-xl p-6 text-center space-y-4 shadow-inner">
                 <p className="text-xl font-semibold">
                   Dear{" "}
-                  <span className="italic capitalize">{recipientName}</span>,
+                  <span className="italic capitalize font-bold">
+                    {recipientName}
+                  </span>
+                  ,
                 </p>
-                <p className="text-lg  text-white/90">
+                <p
+                  className="text-lg leading-relaxed text-white/90"
+                  style={{ textShadow: "0 1px 2px rgba(0,0,0,0.1)" }}
+                >
                   {generatedMessage || customMessage}
                 </p>
+                <div className="pt-3 text-right italic text-white/80">
+                  <p>With love,</p>
+                  <p className="font-medium">Your Friend</p>
+                </div>
               </div>
 
               {/* Bottom icons */}
               <div className="flex justify-center gap-6 text-white/70">
-                <IoSparklesOutline className="size-7 hover:text-white transition duration-300" />
-                <BsBalloonHeart className="size-7 hover:text-white transition duration-300" />
-                <BsBalloon className="size-7 hover:text-white transition duration-300" />
-                <PiConfettiThin className="size-7 hover:text-white transition duration-300" />
+                <IoSparklesOutline className="size-7 hover:text-white hover:scale-125 transition duration-300" />
+                <BsBalloonHeart className="size-7 hover:text-white hover:scale-125 transition duration-300" />
+                <BsBalloon className="size-7 hover:text-white hover:scale-125 transition duration-300" />
+                <PiConfettiThin className="size-7 hover:text-white hover:scale-125 transition duration-300" />
               </div>
-              <div className=" flex flex-col leading-3 text-right text-sm text-gray-400">
-                &copy; WishCube
-                <span className=" text-[10px]">by Abdullahi</span>
+
+              {/* Footer */}
+              <div className="flex justify-between items-center">
+                <div className="text-xs uppercase tracking-widest text-white/60">
+                  WishCube Premium
+                </div>
+                <div className="flex flex-col leading-tight text-right">
+                  <span className="text-sm text-white/80">&copy; WishCube</span>
+                  <span className="text-xs text-white/60">
+                    Built by Abdullahi
+                  </span>
+                </div>
               </div>
             </div>
+
+            {/* Subtle shine effect */}
+            <div
+              className={`absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 ${
+                isHovering ? "animate-shine" : ""
+              }`}
+            ></div>
           </div>
 
           <div className="flex justify-center gap-4 w-full md:w-1/2 mx-auto">
