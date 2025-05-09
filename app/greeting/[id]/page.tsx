@@ -4,7 +4,6 @@ import Image from "next/image";
 import { LuHeartHandshake } from "react-icons/lu";
 import { IoSparklesOutline } from "react-icons/io5";
 import { BiRocket } from "react-icons/bi";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
 interface GreetingData {
   id: string;
