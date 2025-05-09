@@ -519,11 +519,7 @@ Do not include a signature or sender name. Use emojis.
           Additional Features
         </h3>
         <div className="space-y-3">
-          <Gift
-            gifts={gifts}
-            selectedGift={selectedGift}
-            onSelectGift={setSelectedGift}
-          />
+          <Gift gifts={gifts} onSelectGift={setSelectedGift} />
           <Music />
           <VoiceMessage />
         </div>
