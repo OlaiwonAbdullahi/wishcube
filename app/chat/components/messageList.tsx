@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import Markdown from "react-markdown";
+import { Message } from "../page";
 
 interface MessageListProps {
   messages: Message[];

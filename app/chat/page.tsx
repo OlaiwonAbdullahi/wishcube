@@ -70,7 +70,7 @@ const Page: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-4 flex flex-col">
       <MessageList messages={messages} />
-      <Chatinput onSendMessage={handleSendMessage} isTyping={isTyping} />
+      <Chatinput onSendMessage={handleSendMessage} />
     </div>
   );
 };
