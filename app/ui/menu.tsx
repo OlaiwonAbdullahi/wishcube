@@ -12,10 +12,19 @@ import { BiSolidLayout } from "react-icons/bi";
 import { GoHomeFill } from "react-icons/go";
 import { IoIosWallet } from "react-icons/io";
 import { FaVideo } from "react-icons/fa";
-const Menu = () => {
+import { IconType } from "react-icons";
+
+// Define interface for navigation items
+interface NavItem {
+  href: string;
+  icon: IconType;
+  activeIcon: IconType;
+}
+
+const Menu: React.FC = () => {
   const pathname = usePathname();
 
-  const navItems = [
+  const navItems: NavItem[] = [
     {
       href: "/generateWebsite",
       icon: BsLayoutTextWindow,
@@ -29,17 +38,17 @@ const Menu = () => {
     {
       href: "/dashboard",
       icon: TbSmartHome,
-      activeIcon: GoHomeFill, // You can replace this with a filled icon if available
+      activeIcon: GoHomeFill,
     },
     {
       href: "/wallet",
       icon: LiaWalletSolid,
-      activeIcon: IoIosWallet, // Replace with a filled icon if available
+      activeIcon: IoIosWallet,
     },
     {
       href: "/video",
       icon: CiVideoOn,
-      activeIcon: FaVideo, // Replace with a filled icon if available
+      activeIcon: FaVideo,
     },
   ];
 
@@ -48,7 +57,7 @@ const Menu = () => {
       <ul className="fixed bottom-4 left-1/2 -translate-x-1/2 flex gap-4 items-center justify-around w-full sm:w-1/2 md:w-1/4 lg:w-1/5 h-16 bg-white rounded-full shadow-md shadow-[#8c52ff]/15 p-2 z-50">
         {navItems.map(({ href, icon: Icon, activeIcon: ActiveIcon }) => {
           const isActive = pathname === href;
-          const IconComponent = isActive && ActiveIcon ? ActiveIcon : Icon;
+          const IconComponent = isActive ? ActiveIcon : Icon;
 
           return (
             <Link key={href} href={href}>
