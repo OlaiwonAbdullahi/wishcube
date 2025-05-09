@@ -4,6 +4,7 @@ import Image from "next/image";
 import { LuHeartHandshake } from "react-icons/lu";
 import { IoSparklesOutline } from "react-icons/io5";
 import { BiRocket } from "react-icons/bi";
+import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
 interface GreetingData {
   id: string;
@@ -15,8 +16,12 @@ interface GreetingData {
   gift: string | null;
 }
 
-// For App Router, correct type is { params: { id: string } }
-export default function GreetingPage({ params }: { params: { id: string } }) {
+interface PageProps {
+  params: { id: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
+
+export default function GreetingPage({ params }: PageProps) {
   const [greetingData, setGreetingData] = useState<GreetingData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
