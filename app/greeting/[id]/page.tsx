@@ -15,12 +15,12 @@ interface GreetingData {
   gift: string | null;
 }
 
-interface PageProps {
-  params: { id: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}
+// This is a client component receiving the id via props from the parent page component
+type GreetingPageProps = {
+  id: string;
+};
 
-export default function GreetingPage({ params }: PageProps) {
+export default function GreetingCard({ id }: GreetingPageProps) {
   const [greetingData, setGreetingData] = useState<GreetingData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -28,13 +28,13 @@ export default function GreetingPage({ params }: PageProps) {
     // Get greeting data from localStorage
     // Safely handle cases where localStorage might not be available during SSR
     if (typeof window !== "undefined") {
-      const storedData = localStorage.getItem(`greeting_${params.id}`);
+      const storedData = localStorage.getItem(`greeting_${id}`);
       if (storedData) {
         setGreetingData(JSON.parse(storedData));
       }
     }
     setIsLoading(false);
-  }, [params.id]);
+  }, [id]);
 
   if (isLoading) {
     return (
