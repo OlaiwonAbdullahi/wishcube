@@ -93,7 +93,6 @@ const GreetingPage = ({ params }: { params: { id: string } }) => {
                 )}
               </div>
 
-              {/* Image (if exists) */}
               {greetingData.image && (
                 <div className="py-4">
                   <div className="relative w-64 h-64 mx-auto rounded-full overflow-hidden shadow-md bg-white">
@@ -109,7 +108,6 @@ const GreetingPage = ({ params }: { params: { id: string } }) => {
               )}
             </div>
 
-            {/* Message */}
             {greetingData.message && (
               <div className="mx-auto max-w-md p-6 rounded-xl shadow-sm bg-gray-50">
                 <p className="text-gray-700 leading-relaxed">

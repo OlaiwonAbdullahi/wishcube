@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useState } from "react";
 
 const Music = () => {
@@ -32,17 +33,19 @@ const Music = () => {
     }
   };
 
-  const handleSearch = (e) => {
+  const handleSearch = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
     setSearch(e.target.value);
   };
 
-  const handleKeyPress = (e) => {
+  const handleKeyPress = (e: { key: string }) => {
     if (e.key === "Enter") {
       fetchMusicList();
     }
   };
 
-  const playPreview = (previewUrl) => {
+  const playPreview = (previewUrl: string | undefined) => {
     // Create an audio element and play the preview
     const audio = new Audio(previewUrl);
     audio.play();
@@ -74,32 +77,42 @@ const Music = () => {
             <p className="text-center">Loading...</p>
           ) : musicList.length > 0 ? (
             <ul className="space-y-2">
-              {musicList.map((track) => (
-                <li
-                  key={track.id}
-                  className="flex items-center p-2 bg-white rounded-lg shadow"
-                >
-                  {track.album.cover_small && (
-                    <img
-                      src={track.album.cover_small}
-                      alt={track.album.title}
-                      className="w-10 h-10 mr-3"
-                    />
-                  )}
-                  <div className="flex-grow">
-                    <p className="font-medium">{track.title}</p>
-                    <p className="text-sm text-gray-600">{track.artist.name}</p>
-                  </div>
-                  {track.preview && (
-                    <button
-                      onClick={() => playPreview(track.preview)}
-                      className="bg-gray-500 text-white px-3 py-1 rounded-lg text-sm"
-                    >
-                      Play
-                    </button>
-                  )}
-                </li>
-              ))}
+              {musicList.map(
+                (track: {
+                  id: string;
+                  title: string;
+                  artist: { name: string };
+                  album?: { cover_small: string; title: string };
+                  preview?: string;
+                }) => (
+                  <li
+                    key={track.id}
+                    className="flex items-center p-2 bg-white rounded-lg shadow"
+                  >
+                    {track.album?.cover_small && (
+                      <Image
+                        src={track.album.cover_small}
+                        alt={track.album.title}
+                        className="w-10 h-10 mr-3"
+                      />
+                    )}
+                    <div className="flex-grow">
+                      <p className="font-medium">{track.title}</p>
+                      <p className="text-sm text-gray-600">
+                        {track.artist.name}
+                      </p>
+                    </div>
+                    {track.preview && (
+                      <button
+                        onClick={() => playPreview(track.preview)}
+                        className="bg-gray-500 text-white px-3 py-1 rounded-lg text-sm"
+                      >
+                        Play
+                      </button>
+                    )}
+                  </li>
+                )
+              )}
             </ul>
           ) : (
             search.trim() && <p className="text-center">No results found</p>
