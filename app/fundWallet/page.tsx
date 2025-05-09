@@ -11,7 +11,7 @@ const Page = () => {
   const accountName = "John Doe";
   const accountNumber = "1234567890";
 
-  const handleCopy = (text) => {
+  const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text);
     toast.success("copied to clipboard!", {
       position: "top-right",

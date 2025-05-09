@@ -3,7 +3,6 @@ import Hero from "./components/hero";
 import Feature from "./components/feature";
 import HowItWorks from "./components/howItWorks";
 import Cta from "./components/cta";
-import ClientIntakeForm from "./components/clientIntakeForm";
 
 const Page = () => {
   return (
@@ -12,7 +11,6 @@ const Page = () => {
       <Feature />
       <HowItWorks />
       <Cta />
-      <ClientIntakeForm />
     </div>
   );
 };

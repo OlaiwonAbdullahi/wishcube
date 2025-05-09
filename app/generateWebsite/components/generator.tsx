@@ -7,16 +7,47 @@ import {
   IoCopyOutline,
   IoSettingsOutline,
   IoSparklesOutline,
+  IoRoseOutline,
 } from "react-icons/io5";
 import { LuHeartHandshake, LuSquareArrowOutUpRight } from "react-icons/lu";
 import { GoPaste } from "react-icons/go";
-import { CiMenuKebab } from "react-icons/ci";
+import { CiIceCream, CiMenuKebab, CiSettings, CiShare2 } from "react-icons/ci";
 import VoiceMessage from "./voiceMessage";
 import Music from "./music";
-import { BiRocket } from "react-icons/bi";
+import { BiBookOpen, BiEdit, BiRocket } from "react-icons/bi";
+import Gift from "./gift";
+import { GiCupcake } from "react-icons/gi";
+
+// Define theme type
+interface Theme {
+  name: string;
+  primary: string;
+  secondary: string;
+  textPrimary: string;
+  textSecondary: string;
+  bgNeutral: string;
+  textNeutral: string;
+  bgAccent?: string;
+  hoverAccent?: string;
+}
+
+// Define occasion type
+interface Occasion {
+  value: string;
+  label: string;
+}
+
+// Define gift type
+export interface GiftItem {
+  id: string;
+  name: string;
+  price: number;
+  icon: React.ReactNode;
+  bgColor: string;
+}
 
 // Theme configurations with professional color schemes
-const THEMES = [
+const THEMES: Theme[] = [
   {
     name: "corporate-blue",
     primary: "bg-blue-600",
@@ -25,6 +56,8 @@ const THEMES = [
     textSecondary: "text-blue-800",
     bgNeutral: "bg-gray-50",
     textNeutral: "text-gray-50",
+    bgAccent: "bg-blue-100",
+    hoverAccent: "hover:bg-blue-100",
   },
   {
     name: "elegant-charcoal",
@@ -34,6 +67,8 @@ const THEMES = [
     textSecondary: "text-gray-900",
     bgNeutral: "bg-gray-100",
     textNeutral: "text-gray-100",
+    bgAccent: "bg-gray-200",
+    hoverAccent: "hover:bg-gray-200",
   },
   {
     name: "emerald-success",
@@ -43,6 +78,8 @@ const THEMES = [
     textSecondary: "text-emerald-800",
     bgNeutral: "bg-white",
     textNeutral: "text-white",
+    bgAccent: "bg-emerald-100",
+    hoverAccent: "hover:bg-emerald-100",
   },
   {
     name: "royal-purple",
@@ -52,6 +89,8 @@ const THEMES = [
     textSecondary: "text-purple-900",
     bgNeutral: "bg-gray-50",
     textNeutral: "text-gray-50",
+    bgAccent: "bg-purple-100",
+    hoverAccent: "hover:bg-purple-100",
   },
   {
     name: "classic-maroon",
@@ -61,6 +100,8 @@ const THEMES = [
     textSecondary: "text-red-900",
     bgNeutral: "bg-gray-100",
     textNeutral: "text-gray-100",
+    bgAccent: "bg-red-100",
+    hoverAccent: "hover:bg-red-100",
   },
   {
     name: "teal-professional",
@@ -70,6 +111,8 @@ const THEMES = [
     textSecondary: "text-teal-800",
     bgNeutral: "bg-white",
     textNeutral: "text-white",
+    bgAccent: "bg-teal-100",
+    hoverAccent: "hover:bg-teal-100",
   },
   {
     name: "amber-accent",
@@ -79,6 +122,8 @@ const THEMES = [
     textSecondary: "text-amber-800",
     bgNeutral: "bg-gray-50",
     textNeutral: "text-gray-50",
+    bgAccent: "bg-amber-100",
+    hoverAccent: "hover:bg-amber-100",
   },
   {
     name: "indigo-modern",
@@ -88,10 +133,12 @@ const THEMES = [
     textSecondary: "text-indigo-900",
     bgNeutral: "bg-white",
     textNeutral: "text-white",
+    bgAccent: "bg-indigo-100",
+    hoverAccent: "hover:bg-indigo-100",
   },
 ];
 
-const OCCASIONS = [
+const OCCASIONS: Occasion[] = [
   { value: "", label: "Select an Occasion" },
   { value: "birthday", label: "Birthday" },
   { value: "anniversary", label: "Anniversary" },
@@ -104,24 +151,35 @@ const OCCASIONS = [
   { value: "other", label: "Other" },
 ];
 
-const Generator = () => {
+const Generator: React.FC = () => {
   // Form state
-  const [selectedTheme, setSelectedTheme] = useState(THEMES[0]);
-  const [recipientName, setRecipientName] = useState("");
-  const [occasion, setOccasion] = useState("");
-  const [message, setMessage] = useState("");
-  const [customMessage, setCustomMessage] = useState("");
-  const [generatedMessage, setGeneratedMessage] = useState("");
-  const [imageName, setImageName] = useState("");
-  const [imagePreview, setImagePreview] = useState("");
-  const [isPreviewMode, setIsPreviewMode] = useState(false);
+  const [selectedTheme, setSelectedTheme] = useState<Theme>(THEMES[0]);
+  const [recipientName, setRecipientName] = useState<string>("");
+  const [occasion, setOccasion] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+  const [customMessage, setCustomMessage] = useState<string>("");
+  const [generatedMessage, setGeneratedMessage] = useState<string>("");
+  const [imageName, setImageName] = useState<string>("");
+  const [imagePreview, setImagePreview] = useState<string>("");
+  const [isPreviewMode, setIsPreviewMode] = useState<boolean>(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [selectedGift, setSelectedGift] = useState<string | null>(null);
+  const [greetingId, setGreetingId] = useState<string>("");
 
-  const messageRef = useRef(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
 
   // Check if window is defined (client-side only)
   const isBrowser = typeof window !== "undefined";
 
-  const generateMessage = async () => {
+  // Generate a unique ID for the greeting
+  const generateGreetingId = (): string => {
+    return (
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15)
+    );
+  };
+
+  const generateMessage = async (): Promise<void> => {
     const prompt = `
 You are a professional greeting card writer. 
 Please write a heartfelt and personalized ${occasion} greeting for someone named "${recipientName}". 
@@ -154,27 +212,65 @@ Do not include a signature or sender name. Use emojis.
   };
 
   // Handle image upload with preview capability
-  const handleImageUpload = (e) => {
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>): void => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
       setImageName(file.name);
 
       // Create an image preview
       const reader = new FileReader();
-      reader.onload = (event) => {
-        setImagePreview(event.target.result);
+      reader.onload = (event: ProgressEvent<FileReader>) => {
+        if (event.target?.result) {
+          setImagePreview(event.target.result as string);
+        }
       };
       reader.readAsDataURL(file);
     }
   };
 
-  const copyGreetingLink = () => {
-    // In a real app, this would generate and copy an actual link
-    alert("Greeting link copied to clipboard!");
+  const copyGreetingLink = async (): Promise<void> => {
+    try {
+      // Generate a new ID if one doesn't exist
+      if (!greetingId) {
+        setGreetingId(generateGreetingId());
+      }
+
+      // Create the greeting data object
+      const greetingData = {
+        id: greetingId,
+        recipientName,
+        occasion,
+        message: message || customMessage,
+        theme: selectedTheme.name,
+        image: imagePreview,
+        gift: selectedGift,
+      };
+
+      // Create the URL with the greeting data
+      const baseUrl = window.location.origin;
+      const greetingUrl = `${baseUrl}/greeting/${greetingId}`;
+
+      // Store the greeting data in localStorage (temporary solution)
+      localStorage.setItem(
+        `greeting_${greetingId}`,
+        JSON.stringify(greetingData)
+      );
+
+      // Copy the URL to clipboard
+      await navigator.clipboard.writeText(greetingUrl);
+
+      // Show success message
+      alert(
+        "Greeting link copied to clipboard! Share this link with your recipient."
+      );
+    } catch (err) {
+      console.error("Failed to copy greeting link:", err);
+      alert("Failed to copy the greeting link. Please try again.");
+    }
   };
 
   // Paste message functionality
-  const handlePasteMessage = async () => {
+  const handlePasteMessage = async (): Promise<void> => {
     try {
       const clipboardText = await navigator.clipboard.readText();
       if (clipboardText) {
@@ -191,11 +287,47 @@ Do not include a signature or sender name. Use emojis.
     }
   };
 
+  const toggleMenu = (): void => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   // Handle using the generated message as the custom message
-  const useGeneratedMessage = () => {
+  const useGeneratedMessage = (): void => {
     setCustomMessage(generatedMessage);
     setGeneratedMessage("");
   };
+
+  // Gift data
+  const gifts: GiftItem[] = [
+    {
+      id: "flower",
+      name: "Flower",
+      price: 500,
+      icon: <IoRoseOutline className="size-6 text-pink-600" />,
+      bgColor: "bg-pink-100",
+    },
+    {
+      id: "ice-cream",
+      name: "Ice Cream",
+      price: 500,
+      icon: <CiIceCream className="size-6 text-teal-600" />,
+      bgColor: "bg-teal-100",
+    },
+    {
+      id: "cupcake",
+      name: "Cupcake",
+      price: 750,
+      icon: <GiCupcake className="size-6 text-purple-600" />,
+      bgColor: "bg-purple-100",
+    },
+    {
+      id: "frozen-yogurt",
+      name: "Frozen Yogurt",
+      price: 650,
+      icon: <CiIceCream className="size-6 text-blue-600" />,
+      bgColor: "bg-blue-100",
+    },
+  ];
 
   // Simple form validation
   const isFormValid = recipientName.trim() !== "";
@@ -266,7 +398,7 @@ Do not include a signature or sender name. Use emojis.
           cols={20}
           rows={5}
           placeholder="Write your message here..."
-          className="border p-3.5 rounded-lg text-gray-800 placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-violet-200"
+          className="border border-gray-500 p-3.5 rounded-lg text-gray-800 placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-violet-200"
         ></textarea>
         <div className="mt-2.5 flex items-center gap-2">
           <div className="flex">
@@ -387,6 +519,11 @@ Do not include a signature or sender name. Use emojis.
           Additional Features
         </h3>
         <div className="space-y-3">
+          <Gift
+            gifts={gifts}
+            selectedGift={selectedGift}
+            onSelectGift={setSelectedGift}
+          />
           <Music />
           <VoiceMessage />
         </div>
@@ -399,7 +536,7 @@ Do not include a signature or sender name. Use emojis.
           disabled={!isFormValid}
           className={`w-full py-3 px-4 rounded-lg text-white font-medium ${
             isFormValid
-              ? "bg-blue-600 hover:bg-blue-700"
+              ? "bg-gray-600 hover:bg-gray-700"
               : "bg-gray-400 cursor-not-allowed"
           } transition duration-200`}
         >
@@ -435,20 +572,75 @@ Do not include a signature or sender name. Use emojis.
         <div
           className={`${selectedTheme.bgNeutral} p-8 min-h-[500px] max-h-[600px] overflow-y-auto`}
         >
-          <div className="flex items-center justify-between mb-8 border-b pb-4 border-gray-200">
-            <LuHeartHandshake
-              className={`text-2xl ${selectedTheme.textPrimary}`}
-            />
-            <h2
-              className={`text-xl font-bold capitalize ${selectedTheme.textSecondary}`}
-            >
-              {occasion ? `${occasion} Greeting` : "Greeting"}
-            </h2>
-            <div>
-              <CiMenuKebab
-                className={`text-2xl ${selectedTheme.textPrimary}`}
-              />
+          <div className="relative">
+            {/* Header Section */}
+            <div className="flex items-center justify-between mb-6 border-b pb-4 border-gray-200">
+              <div className="flex items-center gap-3">
+                <div
+                  className={`p-2 rounded-full ${selectedTheme.bgAccent} flex items-center`}
+                >
+                  <LuHeartHandshake
+                    size={25}
+                    className={selectedTheme.textPrimary}
+                  />
+                </div>
+              </div>
+              <div className="">
+                <h2
+                  className={`text-xl font-semibold capitalize ${selectedTheme.textSecondary}`}
+                >
+                  {occasion ? `${occasion} Greeting` : "Greeting"}
+                </h2>
+              </div>
+
+              <button
+                onClick={toggleMenu}
+                className={`p-2 rounded-full transition-colors ${selectedTheme.hoverAccent}`}
+                aria-label="Menu"
+              >
+                <CiMenuKebab size={18} className={selectedTheme.textPrimary} />
+              </button>
             </div>
+
+            {isMenuOpen && (
+              <div className="absolute right-0 w-64 bg-white rounded-lg shadow-lg border border-gray-100 py-2 z-10">
+                <ul>
+                  <li className="px-2">
+                    <button className="flex items-center gap-3 w-full px-3 py-2 text-left text-gray-700 rounded-md hover:bg-gray-50">
+                      <BiEdit size={16} className={selectedTheme.textPrimary} />
+                      <span>Create Your Own</span>
+                    </button>
+                  </li>
+                  <li className="px-2">
+                    <button className="flex items-center gap-3 w-full px-3 py-2 text-left text-gray-700 rounded-md hover:bg-gray-50">
+                      <BiBookOpen
+                        size={16}
+                        className={selectedTheme.textPrimary}
+                      />
+                      <span>View Templates</span>
+                    </button>
+                  </li>
+                  <li className="px-2">
+                    <button className="flex items-center gap-3 w-full px-3 py-2 text-left text-gray-700 rounded-md hover:bg-gray-50">
+                      <CiShare2
+                        size={16}
+                        className={selectedTheme.textPrimary}
+                      />
+                      <span>Share</span>
+                    </button>
+                  </li>
+                  <li className="border-t border-gray-100 mt-1 pt-1 px-2">
+                    <button className="flex items-center gap-3 w-full px-3 py-2 text-left text-gray-700 rounded-md hover:bg-gray-50">
+                      <CiSettings
+                        size={16}
+                        className={selectedTheme.textPrimary}
+                      />
+                      <span>Settings</span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
 
           <div className="space-y-6 text-center">
@@ -507,7 +699,7 @@ Do not include a signature or sender name. Use emojis.
 
             <div>
               <button
-                className={`text-lg ${selectedTheme.primary} ${selectedTheme.textNeutral} p-1 rounded-full px-2.5`}
+                className={`text-lg ${selectedTheme.secondary} ${selectedTheme.textNeutral} p-1 rounded-full px-2.5`}
               >
                 Redeem Gift
               </button>

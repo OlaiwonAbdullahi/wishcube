@@ -18,7 +18,7 @@ const Login = () => {
       redirect: false,
     });
 
-    if (res.ok) {
+    if (res?.ok) {
       router.push("/dashboard"); // or wherever
     } else {
       alert("Invalid credentials");
