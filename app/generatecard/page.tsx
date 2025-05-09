@@ -66,6 +66,7 @@ const Page = () => {
 
   const [generatedMessage, setGeneratedMessage] = useState("");
   const [recipientName, setRecipientName] = useState("");
+  const [name, setName] = useState("");
   const [occasion, setOccasion] = useState("");
   const [customMessage, setCustomMessage] = useState("");
   const [selectedTheme, setSelectedTheme] = useState(themes[0]);
@@ -186,6 +187,17 @@ Do not include a signature or sender name. use emojies
           }}
         >
           <div className="flex flex-col mb-4">
+            <label htmlFor="name">Your Name (or NickName)</label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Enter Your Name"
+              className="border p-1.5 rounded-lg text-gray-800 placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-violet-200"
+            />
+          </div>
+          <div className="flex flex-col mb-4">
             <label htmlFor="recipientName">Recipient Name</label>
             <input
               type="text"
@@ -263,7 +275,7 @@ Do not include a signature or sender name. use emojies
           <div
             id="GreetingCard"
             ref={cardRef}
-            className={`relative w-full md:w-3/5 mx-auto overflow-hidden ${
+            className={`relative w-full md:w-1/2 mx-auto overflow-hidden ${
               animate ? "animate-pulse" : ""
             }`}
             onMouseEnter={() => setIsHovering(true)}
@@ -354,7 +366,7 @@ Do not include a signature or sender name. use emojies
                 </p>
                 <div className="pt-3 text-right italic text-white/80">
                   <p>With love,</p>
-                  <p className="font-medium">Your Friend</p>
+                  <p className="font-medium">{name}</p>
                 </div>
               </div>
 
