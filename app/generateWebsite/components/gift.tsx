@@ -69,7 +69,6 @@ const Gift: React.FC<GiftProps> = ({ selectedGift, onSelectGift, gifts }) => {
 };
 
 const GiftItem: React.FC<GiftItemProps> = ({
-  id,
   icon,
   name,
   price,
