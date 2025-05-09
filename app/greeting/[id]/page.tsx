@@ -15,15 +15,19 @@ interface GreetingData {
   gift: string | null;
 }
 
-const GreetingPage = ({ params }: { params: { id: string } }) => {
+// For App Router, correct type is { params: { id: string } }
+export default function GreetingPage({ params }: { params: { id: string } }) {
   const [greetingData, setGreetingData] = useState<GreetingData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Get greeting data from localStorage
-    const storedData = localStorage.getItem(`greeting_${params.id}`);
-    if (storedData) {
-      setGreetingData(JSON.parse(storedData));
+    // Safely handle cases where localStorage might not be available during SSR
+    if (typeof window !== "undefined") {
+      const storedData = localStorage.getItem(`greeting_${params.id}`);
+      if (storedData) {
+        setGreetingData(JSON.parse(storedData));
+      }
     }
     setIsLoading(false);
   }, [params.id]);
@@ -99,9 +103,9 @@ const GreetingPage = ({ params }: { params: { id: string } }) => {
                     <Image
                       src={greetingData.image}
                       alt="Greeting"
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded-full"
+                      width={256}
+                      height={256}
+                      className="rounded-full object-cover"
                     />
                   </div>
                 </div>
@@ -134,6 +138,4 @@ const GreetingPage = ({ params }: { params: { id: string } }) => {
       </div>
     </div>
   );
-};
-
-export default GreetingPage;
+}
