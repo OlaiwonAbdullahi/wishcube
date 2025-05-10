@@ -41,7 +41,7 @@ const Menu: React.FC = () => {
       activeIcon: GoHomeFill,
     },
     {
-      href: "/wallet",
+      href: "/fundWallet",
       icon: LiaWalletSolid,
       activeIcon: IoIosWallet,
     },

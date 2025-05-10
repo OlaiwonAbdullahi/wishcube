@@ -3,7 +3,9 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { FiMail, FiLock, FiEye, FiEyeOff } from "react-icons/fi";
+import { CiMail } from "react-icons/ci";
+import { MdOutlinePassword } from "react-icons/md";
+import { VscEye, VscEyeClosed } from "react-icons/vsc";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -79,7 +81,7 @@ const LoginPage = () => {
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FiMail className="h-5 w-5 text-gray-400" />
+                <CiMail className="h-5 w-5 text-gray-400" />
               </div>
               <input
                 id="email"
@@ -111,7 +113,7 @@ const LoginPage = () => {
             </div>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FiLock className="h-5 w-5 text-gray-400" />
+                <MdOutlinePassword className="h-5 w-5 text-gray-400" />
               </div>
               <input
                 id="password"
@@ -129,9 +131,9 @@ const LoginPage = () => {
                 onClick={togglePasswordVisibility}
               >
                 {showPassword ? (
-                  <FiEyeOff className="h-5 w-5 text-gray-400" />
+                  <VscEyeClosed className="h-5 w-5 text-gray-400" />
                 ) : (
-                  <FiEye className="h-5 w-5 text-gray-400" />
+                  <VscEye className="h-5 w-5 text-gray-400" />
                 )}
               </button>
             </div>
@@ -141,7 +143,7 @@ const LoginPage = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gray-600 text-white p-3 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors disabled:opacity-75 disabled:cursor-not-allowed flex justify-center items-center"
+              className="w-full cursor-pointer bg-gray-600 text-white p-3 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors disabled:opacity-75 disabled:cursor-not-allowed flex justify-center items-center"
             >
               {loading ? (
                 <>
