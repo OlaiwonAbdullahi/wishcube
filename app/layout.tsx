@@ -3,7 +3,7 @@ import { Afacad } from "next/font/google";
 import "./globals.css";
 import Navbar from "./ui/navbar";
 import Providers from "./provider";
-
+import Footer from "./ui/footer";
 const afacad = Afacad({
   variable: "--font-afacad",
   subsets: ["latin"],
@@ -27,6 +27,7 @@ export default function RootLayout({
         <Providers>
           <Navbar />
           {children}
+          <Footer />
         </Providers>
       </body>
     </html>

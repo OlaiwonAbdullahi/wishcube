@@ -2,6 +2,7 @@ import React from "react";
 import { GoArrowUpRight } from "react-icons/go";
 import { CiLogin } from "react-icons/ci";
 import Image from "next/image";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -17,13 +18,17 @@ const Hero = () => {
           place.
         </p>
         <div className=" gap-2.5 flex justify-center items-center mt-5 mb-10">
-          <button className="flex gap-2 items-center text-[#1C1C1C] border bg-[#F8F8FF] py-2 px-3 rounded-lg hover:bg-[#cfcfcf] transition duration-300 ease-in-out">
-            Get Started <CiLogin className="size-5" />
-          </button>
-          <button className="flex gap-2 items-center bg-[#1C1C1C] text-[#F8F8FF] py-2 px-3 rounded-lg hover:bg-[#2C2C2C] transition duration-300 ease-in-out">
-            Learn More
-            <GoArrowUpRight className="size-5" />
-          </button>
+          <Link href="/signup">
+            <button className="flex gap-2 items-center text-[#1C1C1C] border bg-[#F8F8FF] py-2 px-3 rounded-lg hover:bg-[#cfcfcf] transition duration-300 ease-in-out">
+              Get Started <CiLogin className="size-5" />
+            </button>
+          </Link>
+          <Link href="/about">
+            <button className="flex gap-2 items-center bg-[#1C1C1C] text-[#F8F8FF] py-2 px-3 rounded-lg hover:bg-[#2C2C2C] transition duration-300 ease-in-out">
+              Learn More
+              <GoArrowUpRight className="size-5" />
+            </button>
+          </Link>
         </div>
       </div>
       <div className=" p-4 flex justify-center items-center mt-5 mb-10">

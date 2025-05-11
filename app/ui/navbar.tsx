@@ -14,8 +14,11 @@ const Navbar = () => {
 
   // Close dropdown on outside click
   useEffect(() => {
-    function handleClickOutside(event: { target: any }) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setOpenAccountSettings(false);
       }
     }
@@ -28,7 +31,16 @@ const Navbar = () => {
     <div className="relative z-40">
       <div className="flex justify-between items-center bg-white/20 p-3 md:w-4/5 backdrop-blur-md sticky top-0 w-10/12 mx-auto rounded-2xl border border-black/40 mt-2">
         <Link href="/dashboard" className="flex items-center gap-2">
-          <div className="text-xl font-semibold">WishCube</div>
+          <div className="text-xl font-semibold flex items-center gap-2">
+            <Image
+              src="/wishcubelogo.png"
+              alt="logo"
+              width={50}
+              height={50}
+              className=" rounded-full"
+            />
+            WishCube
+          </div>
         </Link>
 
         <div className="flex items-center gap-4 relative">

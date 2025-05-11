@@ -49,22 +49,22 @@ export default function ProfilePage() {
           </div>
 
           <div className="flex flex-col gap-2 items-start justify-start text-left">
-            <span className="flex items-center gap-2 whitespace-nowrap">
+            <span className=" cursor-pointer hover:bg-gray-100 p-1 rounded-md flex items-center gap-2 whitespace-nowrap">
               {" "}
               <MdOutlinePassword className="text-gray-500" /> Change password
             </span>
-            <span className="flex items-center gap-2 whitespace-nowrap">
+            <span className=" cursor-pointer hover:bg-gray-100 p-1 rounded-md flex items-center gap-2 whitespace-nowrap">
               {" "}
               <MdOutlineEmail className="text-gray-500" /> Change email
             </span>
 
-            <span className="flex items-center gap-2 whitespace-nowrap">
+            <span className=" cursor-pointer hover:bg-gray-100 p-1 rounded-md flex items-center gap-2 whitespace-nowrap">
               {" "}
               <MdOutlineDarkMode className="text-gray-500" /> Change Theme
             </span>
             <span
               onClick={signOut}
-              className="flex items-center gap-2 whitespace-nowrap  "
+              className="flex cursor-pointer hover:bg-gray-100 p-1 rounded-md items-center gap-2 whitespace-nowrap  "
             >
               {" "}
               <MdLogout className="text-gray-500" /> Logout

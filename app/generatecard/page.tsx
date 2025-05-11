@@ -76,9 +76,9 @@ const GreetingCardPage = () => {
 
   // Generate AI message
   const generateMessage = async (e: React.FormEvent<HTMLFormElement>) => {
-    e?.preventDefault();
+    e.preventDefault();
 
-    const { name, recipientName, occasion, customMessage } = formData;
+    const { recipientName, occasion, customMessage } = formData;
 
     if (!recipientName || !occasion) {
       toast.error("Please provide recipient name and occasion");
