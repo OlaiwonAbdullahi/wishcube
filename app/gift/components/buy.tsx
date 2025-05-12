@@ -88,7 +88,7 @@ const GiftShop = () => {
             <div
               key={gift.id}
               className="flex justify-center"
-              onMouseEnter={() => setHoveredGift(gift.id)}
+              onMouseEnter={() => setHoveredGift(gift.id as any)}
               onMouseLeave={() => setHoveredGift(null)}
             >
               <div

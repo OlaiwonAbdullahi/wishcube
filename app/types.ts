@@ -8,9 +8,3 @@ export interface GiftTransaction {
   timestamp: string;
   status: GiftTransactionStatus;
 }
-export interface Message {
-  id: string;
-  text: string;
-  sender: "user" | "bot";
-  timestamp?: string;
-}
