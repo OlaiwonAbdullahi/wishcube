@@ -71,15 +71,18 @@ const GiftShop = () => {
   const [hoveredGift, setHoveredGift] = useState(null);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-gray-50 py-12 rounded-2xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-slate-800 text-left mb-4">
-          Gift Shop
-        </h2>
-        <p className="text-gray-600 text-left mb-12 max-w-2xl mx-auto">
-          Make someone&apos;s day with a unique digital gift! Explore our
-          collection to find the perfect surprise.
-        </p>
+        <div className=" flex flex-col gap-4 self-start">
+          <h2 className="text-3xl font-bold text-slate-800 text-left ">
+            Gift Shop
+          </h2>
+
+          <p className="text-gray-600 text-left mb-12 max-w-2xl">
+            Make someone&apos;s day with a unique digital gift! Explore our
+            collection to find the perfect surprise.
+          </p>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {gifts.map((gift) => (
             <div

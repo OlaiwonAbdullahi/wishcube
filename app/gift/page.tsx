@@ -3,10 +3,27 @@ import React, { useState } from "react";
 import Menu from "../ui/menu";
 import Buy from "./components/buy";
 import ReceiveGift from "./components/receiveGift";
+import GiftHistory from "./components/giftHistory";
+import { GiftTransaction } from "../types";
 
 const Page = () => {
   const [activeTab, setActiveTab] = useState("buy"); // Default to "buy" tab
-
+  const sampleTransactions: GiftTransaction[] = [
+    {
+      id: "1",
+      type: "sent",
+      amount: 100,
+      timestamp: new Date().toISOString(),
+      status: "failed",
+    },
+    {
+      id: "2",
+      type: "received",
+      amount: 100,
+      timestamp: new Date().toISOString(),
+      status: "successful",
+    },
+  ];
   return (
     <div>
       <div className="mb-6">
@@ -41,6 +58,7 @@ const Page = () => {
       </div>
 
       <div className="mt-6">
+        <GiftHistory transactions={sampleTransactions} />
         <Menu />
       </div>
     </div>

@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@civic/auth-web3": "^0.5.8",
     "@clerk/nextjs": "^6.18.5",
+    "@paystack/inline-js": "^2.22.4",
     "axios": "^1.9.0",
     "clsx": "^2.1.1",
     "firebase": "^11.7.1",
