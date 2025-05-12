@@ -1,4 +1,3 @@
-"use client";
 import React, {
   createContext,
   useContext,
@@ -20,6 +19,7 @@ interface AuthContextType {
   loading: boolean;
   signOut: () => Promise<void>;
   userProfile: UserProfile | null;
+  setUserProfile: (profile: UserProfile | null) => void; // Add setUserProfile
 }
 
 // Additional user profile data (can be extended)
@@ -28,7 +28,6 @@ interface UserProfile {
   email: string | null;
   photoURL: string | null;
   uid: string;
-  // Add any additional user properties you need
   createdAt?: string;
   lastLogin?: string;
 }
@@ -39,6 +38,7 @@ const AuthContext = createContext<AuthContextType>({
   loading: true,
   signOut: async () => {},
   userProfile: null,
+  setUserProfile: () => {}, // Provide a default no-op function
 });
 
 // Hook to use the auth context
@@ -101,6 +101,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     loading,
     signOut,
     userProfile,
+    setUserProfile, // Include setUserProfile in the context value
   };
 
   return (

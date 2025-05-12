@@ -1,14 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { BsGem } from "react-icons/bs";
 import { CiHeart, CiStar } from "react-icons/ci";
-
 import { IoRocketOutline } from "react-icons/io5";
 import { PiConfettiThin, PiCrownThin } from "react-icons/pi";
 import { SlMagicWand } from "react-icons/sl";
+import { Gift } from "../../types";
 
-const gifts = [
+const gifts: Gift[] = [
   {
     id: 1,
     name: "Sparkle Confetti",
@@ -67,14 +67,27 @@ const gifts = [
   },
 ];
 
-const GiftShop = () => {
-  const [hoveredGift, setHoveredGift] = useState(null);
+const GiftShop: React.FC = () => {
+  const [hoveredGift, setHoveredGift] = useState<number | null>(null);
+
+  const handleMouseEnter = (giftId: number) => {
+    setHoveredGift(giftId);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredGift(null);
+  };
+
+  const handleBuyNow = (gift: Gift) => {
+    // Implement buy logic
+    console.log(`Buying ${gift.name}`);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 rounded-2xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className=" flex flex-col gap-4 self-start">
-          <h2 className="text-3xl font-bold text-slate-800 text-left ">
+        <div className="flex flex-col gap-4 self-start">
+          <h2 className="text-3xl font-bold text-slate-800 text-left">
             Gift Shop
           </h2>
 
@@ -88,11 +101,11 @@ const GiftShop = () => {
             <div
               key={gift.id}
               className="flex justify-center"
-              onMouseEnter={() => setHoveredGift(gift.id as any)}
-              onMouseLeave={() => setHoveredGift(null)}
+              onMouseEnter={() => handleMouseEnter(gift.id)}
+              onMouseLeave={handleMouseLeave}
             >
               <div
-                className={`bg-white rounded-2xl  p-6 w-full max-w-sm transition-all duration-300 ${
+                className={`bg-white rounded-2xl p-6 w-full max-w-sm transition-all duration-300 ${
                   hoveredGift === gift.id ? "scale-105 shadow-xl" : "shadow-md"
                 }`}
               >
@@ -113,7 +126,8 @@ const GiftShop = () => {
                     </div>
                   </div>
                   <button
-                    className={` cursor-pointer mt-6 w-full py-2 px-4 rounded-lg text-white font-medium transition-colors duration-200 ${
+                    onClick={() => handleBuyNow(gift)}
+                    className={`cursor-pointer mt-6 w-full py-2 px-4 rounded-lg text-white font-medium transition-colors duration-200 ${
                       hoveredGift === gift.id ? "bg-gray-700" : "bg-gray-600"
                     } hover:bg-gray-700`}
                   >

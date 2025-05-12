@@ -33,8 +33,10 @@ const ReceiveGift = () => {
 
       setMessage("🎉 Gift redeemed successfully! Enjoy your reward.");
       setGiftCode(""); // reset input
-    } catch (err) {
-      setError(err.message);
+    } catch (err: unknown) {
+      setError(
+        err instanceof Error ? err.message : "An unexpected error occurred"
+      );
     } finally {
       setLoading(false);
     }

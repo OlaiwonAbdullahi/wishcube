@@ -10,7 +10,8 @@ import Image from "next/image";
 const Navbar = () => {
   const [openAccountSettings, setOpenAccountSettings] = useState(false);
   const { userProfile } = useAuth();
-  const dropdownRef = useRef(null);
+  // Explicitly type the ref as HTMLDivElement
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown on outside click
   useEffect(() => {
