@@ -10,6 +10,7 @@ import { LuSparkles } from "react-icons/lu";
 import Menu from "../ui/menu";
 import { toBlob, toPng } from "html-to-image";
 import toast, { Toaster } from "react-hot-toast";
+import { useAuth } from "../AuthContext";
 
 // Extracted constants
 const THEMES = [
@@ -173,6 +174,9 @@ const GreetingCardPage = () => {
     }
   };
 
+  const { userProfile } = useAuth();
+  console.log(userProfile);
+
   // Render form section
   const renderForm = () => (
     <div className="flex flex-col w-full md:w-1/2 bg-white/10 bg-clip-padding backdrop-filter backdrop-blur-sm border border-black/25 p-6 rounded-2xl space-y-6 mx-auto m-10">
@@ -195,6 +199,10 @@ const GreetingCardPage = () => {
             placeholder="Enter Your Name"
             className="border p-1.5 rounded-lg text-gray-800 placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-violet-200"
           />
+          <span>
+            {" "}
+            Or Use Your Name &quot;{userProfile?.displayName}&quot; ?
+          </span>
         </div>
 
         {/* Recipient Name Input */}

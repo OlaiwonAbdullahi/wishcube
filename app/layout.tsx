@@ -3,6 +3,7 @@ import { Afacad } from "next/font/google";
 import "./globals.css";
 import Providers from "./provider";
 import LayoutClient from "./LayoutClient";
+
 const afacad = Afacad({
   variable: "--font-afacad",
   subsets: ["latin"],
