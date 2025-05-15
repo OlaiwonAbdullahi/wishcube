@@ -5,8 +5,19 @@ import { FiDollarSign } from "react-icons/fi";
 import { BsArrow90DegDown } from "react-icons/bs";
 import { VscGift } from "react-icons/vsc";
 
+type Metric = {
+  title: string;
+  value: string;
+  change: string;
+  positive: boolean;
+  icon: React.ReactNode;
+  bg: string;
+  iconBg: string;
+  iconColor: string;
+};
+
 const SalesReport = () => {
-  const metrics = [
+  const metrics: Metric[] = [
     {
       title: "Total Users",
       value: "2,548",
@@ -50,7 +61,7 @@ const SalesReport = () => {
   ];
 
   // Stat card component
-  const StatCard = ({ metric }) => {
+  const StatCard = ({ metric }: { metric: Metric }) => {
     return (
       <div className={`rounded-lg border border-gray-200  p-5 ${metric.bg}`}>
         <div className="flex items-center justify-between mb-3">
