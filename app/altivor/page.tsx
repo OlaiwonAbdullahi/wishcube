@@ -1,12 +1,12 @@
 import React from "react";
-import About from "./components/about";
-import Explore from "./components/explore";
+import WhoWeAre from "./components/whoWeAre";
+import WhyChoose from "./components/whyChoose";
 
 const Page = () => {
   return (
     <div>
-      <About />
-      <Explore />
+      <WhoWeAre />
+      <WhyChoose />
     </div>
   );
 };
