@@ -1,12 +1,21 @@
 import React from "react";
-import WhoWeAre from "./components/whoWeAre";
-import WhyChoose from "./components/whyChoose";
+//import RiskReview from "./components/riskReview";
+import Cta from "./components/cta";
+import CustomContract from "./components/customContract";
+//import Drafting from "./components/drafting";
+//import Intro from "./components/intro";
+//import ServiceCards from "./components/serviceCards";
 
 const Page = () => {
   return (
     <div>
-      <WhoWeAre />
-      <WhyChoose />
+      {/* <Intro />
+      <ServiceCards />
+      <RiskReview />
+      <Drafting />
+      */}
+      <CustomContract />
+      <Cta />
     </div>
   );
 };

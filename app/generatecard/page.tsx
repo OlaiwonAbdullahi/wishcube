@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { BsBalloon, BsBalloonHeart } from "react-icons/bs";
-import { CiShare2 } from "react-icons/ci";
+import { CiEdit, CiShare2 } from "react-icons/ci";
 import { IoCloudDownloadOutline, IoSparklesOutline } from "react-icons/io5";
 import { PiConfettiThin } from "react-icons/pi";
 import { FaStar, FaGift, FaFeatherAlt } from "react-icons/fa";
@@ -180,11 +180,17 @@ const GreetingCardPage = () => {
   // Render form section
   const renderForm = () => (
     <div className="flex flex-col w-full md:w-1/2 bg-white/10 bg-clip-padding backdrop-filter backdrop-blur-sm border border-black/25 p-6 rounded-2xl space-y-6 mx-auto m-10">
-      <div className="flex flex-col self-start text-left">
-        <h1 className="text-2xl font-bold text-left">Generate Your Card</h1>
-        <p className="text-left text-gray-600">
-          Create personalized greeting cards for any occasion.
-        </p>
+      <div className="flex flex-row justify-between items-center">
+        <div className="flex flex-col self-start text-left">
+          <h1 className="text-2xl font-bold text-left">Generate Your Card</h1>
+          <p className="text-left text-gray-600">
+            Create personalized greeting cards for any occasion.
+          </p>
+        </div>
+        <div className=" flex items-center gap-2">
+          <CiEdit className="size-6" />
+          Customize Form
+        </div>
       </div>
 
       <form onSubmit={generateMessage}>

@@ -10,6 +10,9 @@ import {
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
+import { db } from "../firebase";
+import { doc, setDoc } from "firebase/firestore";
+
 import { toast, Toaster } from "react-hot-toast";
 
 // Define proper types for form data and errors
@@ -91,9 +94,7 @@ const SignupPage: React.FC = () => {
     return valid;
   };
 
-  const handleSignup = async (
-    e: React.FormEvent<HTMLFormElement>
-  ): Promise<void> => {
+  const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validateForm()) return;
 
@@ -102,9 +103,20 @@ const SignupPage: React.FC = () => {
         formData.email,
         formData.password
       );
-      if (!result) {
+
+      if (!result || !result.user) {
         throw new Error("Failed to create account");
       }
+
+      // Save additional data to Firestore
+      await setDoc(doc(db, "users", result.user.uid), {
+        uid: result.user.uid,
+        name: formData.name,
+        email: formData.email,
+        createdAt: new Date(),
+      });
+
+      toast.success("Account created successfully!");
     } catch (error) {
       console.error("Signup error:", error);
       setErrors((prev) => ({
