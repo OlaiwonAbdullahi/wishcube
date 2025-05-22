@@ -3,7 +3,6 @@ import Menu from "../ui/menu";
 import WalletBalance from "./components/walletBallance";
 import QuickAction from "./components/quickAction";
 import ProtectedRoute from "../protectedRoutes";
-//import Generator from "../generateWebsite/components/generator";
 
 const Page = () => {
   return (

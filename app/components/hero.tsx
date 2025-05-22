@@ -23,9 +23,9 @@ const Hero = () => {
               Get Started <CiLogin className="size-5" />
             </button>
           </Link>
-          <Link href="/about">
+          <Link href="/login">
             <button className="flex gap-2 items-center bg-[#1C1C1C] text-[#F8F8FF] py-2 px-3 rounded-lg hover:bg-[#2C2C2C] transition duration-300 ease-in-out">
-              Learn More
+              Login
               <GoArrowUpRight className="size-5" />
             </button>
           </Link>

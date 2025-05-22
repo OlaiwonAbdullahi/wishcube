@@ -60,19 +60,25 @@ const WalletBalance = () => {
           </div>
         </div>
         <div className=" flex items-center justify-around w-full ">
-          <div className=" cursor-pointer flex items-center  justify-center p-1 px-3 w-1/3 gap-2 bg-gray-200 rounded-lg">
-            <Link href="/fundWallet" className="flex items-center gap-2">
+          <Link
+            href="/fundWallet"
+            className=" cursor-pointer flex items-center  justify-center p-1 px-3 w-1/3 gap-2 bg-gray-200 rounded-lg"
+          >
+            <div className=" flex items-center gap-2">
               <span className="font-medium text-gray-700 p-1 rounded-full flex items-center justify-center h-8  cursor-pointer  transition duration-200">
                 <SlWallet className="size-4" />
               </span>
               <span className=" text-gray-700 whitespace-nowrap">
                 Fund Wallet
               </span>
-            </Link>
-          </div>
+            </div>
+          </Link>
           <div className=" cursor-pointer flex items-center justify-center  p-1 px-3 w-1/3 gap-2 bg-gray-200 rounded-lg">
-            <Link href="/gift" className="flex items-center gap-2">
-              <span className="font-medium text-gray-700 p-1 rounded-full flex items-center justify-center h-8  cursor-pointer  transition duration-200">
+            <Link
+              href="/gift"
+              className="flex items-center gap-2 cursor-pointer justify-center p-1 px-3 w-1/3  bg-gray-200 rounded-lg"
+            >
+              <span className="font-medium text-gray-700  flex items-center justify-center cursor-pointer  transition duration-200">
                 <BsArrow90DegDown className="size-4" />
               </span>
               <span className=" text-gray-700 whitespace-nowrap">

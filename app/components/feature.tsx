@@ -78,8 +78,8 @@ const Feature = () => {
       <div className="">
         <h1 className="text-3xl font-bold text-center">Features</h1>
         <p className="text-center text-gray-500">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-          voluptatibus.
+          We offer a range of features to help you create and share your
+          greetings with ease.
         </p>
       </div>
       <div className="">
