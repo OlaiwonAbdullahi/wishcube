@@ -1,12 +1,15 @@
 import React from "react";
-import Hero from "./components/hero";
+import PricingHero from "./components/pricingHero";
 import Mission from "./components/mission";
 import Team from "./components/team";
+import PricingCard from "./components/pricingCard";
 
 const Page = () => {
   return (
-    <div>
-      <Hero />
+    <div className="bg-white">
+      <PricingHero />
+      <PricingCard />
+
       <Mission />
       <Team />
     </div>
