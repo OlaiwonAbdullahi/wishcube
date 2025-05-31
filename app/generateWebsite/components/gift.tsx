@@ -34,7 +34,7 @@ const Gift: React.FC<GiftProps> = ({ selectedGift, onSelectGift, gifts }) => {
   const handleSelect = onSelectGift || setInternalSelectedGift;
 
   return (
-    <div className="w-full max-w-3xl mx-auto">
+    <div className="w-full max-w-3xl mx-auto mt-3">
       <label
         htmlFor="gift"
         className="block text-sm font-medium text-gray-700 mb-2"

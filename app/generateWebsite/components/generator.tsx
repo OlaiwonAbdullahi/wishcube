@@ -165,6 +165,8 @@ const Generator: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [selectedGift, setSelectedGift] = useState<string | null>(null);
   const [greetingId, setGreetingId] = useState<string>("");
+  const [isOn, setIsOn] = useState(false);
+  const [addMusic, setAddMusic] = useState(false);
 
   const messageRef = useRef<HTMLTextAreaElement>(null);
 
@@ -295,6 +297,12 @@ Do not include a signature or sender name. Use emojis.
   const useGeneratedMessage = (): void => {
     setCustomMessage(generatedMessage);
     setGeneratedMessage("");
+  };
+  const handleToggle = () => {
+    setIsOn(!isOn);
+  };
+  const handleMusicToggle = () => {
+    setAddMusic(!addMusic);
   };
 
   // Gift data
@@ -514,13 +522,62 @@ Do not include a signature or sender name. Use emojis.
       </div>
 
       {/* Additional Features */}
-      <div className="border-t border-gray-200 pt-4">
-        <h3 className="text-sm font-medium text-gray-700 mb-3">
-          Additional Features
-        </h3>
+      <div className=" space-y-4">
+        <div className="border-t border-gray-200 pt-4 mb-4">
+          <h3 className="text-sm font-medium text-gray-700 mb-3">
+            Additional Features
+          </h3>
+          <div className=" flex items-center justify-between  mx-auto border border-gray-300 rounded-xl p-3">
+            <div className="">
+              <h2 className=" text-xl font-medium">Add Gift</h2>
+            </div>
+            <div
+              className={`h-5 w-10 rounded-xl border border-gray-400 flex items-center cursor-pointer transition-colors duration-200 ${
+                isOn ? "bg-gray-200" : "bg-gray-200"
+              }`}
+              onClick={handleToggle}
+            >
+              <div
+                className={`bg-gray-800 h-4 w-4 rounded-full shadow-sm transition-transform duration-200 ${
+                  isOn
+                    ? "transform translate-x-5 "
+                    : "transform translate-x-0.5 bg-gray-700"
+                }`}
+              />
+            </div>
+          </div>
+          <div className=" flex items-center justify-between  mx-auto border border-gray-300 rounded-xl p-3 mt-4">
+            <div className="">
+              <h2 className=" text-xl font-medium">Add Music</h2>
+            </div>
+            <div
+              className={`h-5 w-10 rounded-xl border border-gray-400 flex items-center cursor-pointer transition-colors duration-200 ${
+                addMusic ? "bg-gray-200" : "bg-gray-200"
+              }`}
+              onClick={handleMusicToggle}
+            >
+              <div
+                className={`bg-gray-800 h-4 w-4 rounded-full shadow-sm transition-transform duration-200 ${
+                  addMusic
+                    ? "transform translate-x-5 "
+                    : "transform translate-x-0.5 bg-gray-700"
+                }`}
+              />
+            </div>
+          </div>
+        </div>
+
         <div className="space-y-3">
-          <Gift gifts={gifts} onSelectGift={setSelectedGift} />
-          <Music />
+          {isOn && (
+            <div className="">
+              <Gift gifts={gifts} onSelectGift={setSelectedGift} />
+            </div>
+          )}
+          {addMusic && (
+            <div className="">
+              <Music />
+            </div>
+          )}
           <VoiceMessage />
         </div>
       </div>
