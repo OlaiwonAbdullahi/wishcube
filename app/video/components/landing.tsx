@@ -20,7 +20,7 @@ const Landing = () => {
         </h1>
         <p className="text-gray-600 text-lg leading-relaxed">
           Our secure video conferencing platform enables seamless communication
-          for your business needs, no matter where your team is located.
+          for your occasion needs, no matter where your friend is located.
         </p>
       </div>
 

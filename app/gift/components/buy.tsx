@@ -7,6 +7,7 @@ import { IoRocketOutline } from "react-icons/io5";
 import { PiConfettiThin, PiCrownThin } from "react-icons/pi";
 import { SlMagicWand } from "react-icons/sl";
 import { Gift } from "../../types";
+import ProductDetail from "./productDetail";
 
 const gifts: Gift[] = [
   {
@@ -84,62 +85,69 @@ const GiftShop: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 rounded-2xl">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-4 self-start">
-          <h2 className="text-3xl font-bold text-slate-800 text-left">
-            Gift Shop
-          </h2>
+    <>
+      <div className="min-h-screen bg-gray-50 py-12 rounded-2xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-4 self-start">
+            <h2 className="text-3xl font-bold text-slate-800 text-left">
+              Gift Shop
+            </h2>
 
-          <p className="text-gray-600 text-left mb-12 max-w-2xl">
-            Make someone&apos;s day with a unique digital gift! Explore our
-            collection to find the perfect surprise.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {gifts.map((gift) => (
-            <div
-              key={gift.id}
-              className="flex justify-center"
-              onMouseEnter={() => handleMouseEnter(gift.id)}
-              onMouseLeave={handleMouseLeave}
-            >
+            <p className="text-gray-600 text-left mb-12 max-w-2xl">
+              Make someone&apos;s day with a unique digital gift! Explore our
+              collection to find the perfect surprise.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {gifts.map((gift) => (
               <div
-                className={`bg-white rounded-2xl p-6 w-full max-w-sm transition-all duration-300 ${
-                  hoveredGift === gift.id ? "scale-105 shadow-xl" : "shadow-md"
-                }`}
+                key={gift.id}
+                className="flex justify-center"
+                onMouseEnter={() => handleMouseEnter(gift.id)}
+                onMouseLeave={handleMouseLeave}
               >
-                <div className="flex flex-col items-center text-center">
-                  <div className={`p-4 rounded-full bg-gray-100 ${gift.color}`}>
-                    <gift.icon className="w-10 h-10" />
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold text-slate-800">
-                    {gift.name}
-                  </h3>
-                  <p className="mt-2 text-sm text-gray-500 min-h-[40px]">
-                    {gift.description}
-                  </p>
-                  <div className="mt-4 flex items-center gap-3">
-                    <div className="flex items-center gap-1 bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm font-medium">
-                      <BsGem className="w-5 h-5" />
-                      <span>{gift.price}</span>
+                <div
+                  className={`bg-white rounded-2xl p-6 w-full max-w-sm transition-all duration-300 ${
+                    hoveredGift === gift.id
+                      ? "scale-105 shadow-xl"
+                      : "shadow-md"
+                  }`}
+                >
+                  <div className="flex flex-col items-center text-center">
+                    <div
+                      className={`p-4 rounded-full bg-gray-100 ${gift.color}`}
+                    >
+                      <gift.icon className="w-10 h-10" />
                     </div>
+                    <h3 className="mt-4 text-lg font-semibold text-slate-800">
+                      {gift.name}
+                    </h3>
+                    <p className="mt-2 text-sm text-gray-500 min-h-[40px]">
+                      {gift.description}
+                    </p>
+                    <div className="mt-4 flex items-center gap-3">
+                      <div className="flex items-center gap-1 bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm font-medium">
+                        <BsGem className="w-5 h-5" />
+                        <span>{gift.price}</span>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => handleBuyNow(gift)}
+                      className={`cursor-pointer mt-6 w-full py-2 px-4 rounded-lg text-white font-medium transition-colors duration-200 ${
+                        hoveredGift === gift.id ? "bg-gray-700" : "bg-gray-600"
+                      } hover:bg-gray-700`}
+                    >
+                      Buy Now
+                    </button>
                   </div>
-                  <button
-                    onClick={() => handleBuyNow(gift)}
-                    className={`cursor-pointer mt-6 w-full py-2 px-4 rounded-lg text-white font-medium transition-colors duration-200 ${
-                      hoveredGift === gift.id ? "bg-gray-700" : "bg-gray-600"
-                    } hover:bg-gray-700`}
-                  >
-                    Buy Now
-                  </button>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+      <ProductDetail />
+    </>
   );
 };
 
