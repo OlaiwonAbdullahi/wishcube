@@ -7,7 +7,7 @@ import path from 'path';
 
 async function connectDB() {
   const uri = process.env.MONGO_URI
-  
+ 
 
   const client = new MongoClient(uri, {
     useNewUrlParser:    true,
