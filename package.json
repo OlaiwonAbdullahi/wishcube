@@ -10,8 +10,11 @@
   },
   "dependencies": {
     "@paystack/inline-js": "^2.22.4",
+    "express": "^5.1.0",
     "firebase": "^11.7.3",
     "html-to-image": "^1.11.13",
+    "mongodb": "^6.17.0",
+    "mongoose": "^8.15.1",
     "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

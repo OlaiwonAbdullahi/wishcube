@@ -175,8 +175,7 @@ const Generator: React.FC = () => {
 
   // Generate a unique ID for the greeting
   const generateGreetingId = (): string => {
-    return (
-      Math.random().toString(36).substring(2, 15) +
+    return(
       Math.random().toString(36).substring(2, 15)
     );
   };
@@ -231,45 +230,54 @@ Do not include a signature or sender name. Use emojis.
   };
 
   const copyGreetingLink = async (): Promise<void> => {
-    try {
-      // Generate a new ID if one doesn't exist
-      if (!greetingId) {
-        setGreetingId(generateGreetingId());
-      }
-
-      // Create the greeting data object
-      const greetingData = {
-        id: greetingId,
-        recipientName,
-        occasion,
-        message: message || customMessage,
-        theme: selectedTheme.name,
-        image: imagePreview,
-        gift: selectedGift,
-      };
-
-      // Create the URL with the greeting data
-      const baseUrl = window.location.origin;
-      const greetingUrl = `${baseUrl}/greeting/${greetingId}`;
-
-      // Store the greeting data in localStorage (temporary solution)
-      localStorage.setItem(
-        `greeting_${greetingId}`,
-        JSON.stringify(greetingData)
-      );
-
-      // Copy the URL to clipboard
-      await navigator.clipboard.writeText(greetingUrl);
-
-      // Show success message
-      alert(
-        "Greeting link copied to clipboard! Share this link with your recipient."
-      );
-    } catch (err) {
-      console.error("Failed to copy greeting link:", err);
-      alert("Failed to copy the greeting link. Please try again.");
+  try {
+    // Generate a new ID if one doesn't exist
+    if (!greetingId) {
+      setGreetingId(generateGreetingId());
+      
     }
-  };
+
+    // Create the greeting data object
+    const greetingData = {
+      id: generateGreetingId(),
+      recipientName,
+      occasion,
+      message: message || customMessage,
+      theme: selectedTheme.name,
+      image: imagePreview,
+      gift: selectedGift,
+    };
+    console.log(greetingId)
+    console.log(greetingData)
+    // Post the greeting data to your backend API
+    const response = await fetch('/api/link', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(greetingData),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    // Create the URL with the greeting data
+    const baseUrl = window.location.origin;
+    const greetingUrl = `${baseUrl}/greeting/${greetingData.id}`;
+
+    // Copy the URL to clipboard
+    await navigator.clipboard.writeText(greetingUrl);
+
+    // Show success message
+    alert(
+      "Greeting saved and link copied to clipboard! Share this link with your recipient."
+    );
+  } catch (err) {
+    console.error("Failed to save and copy greeting link:", err);
+    alert("Failed to save and copy the greeting link. Please try again.");
+  }
+};
 
   // Paste message functionality
   const handlePasteMessage = async (): Promise<void> => {
