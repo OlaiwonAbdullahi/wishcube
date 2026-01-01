@@ -1,4 +1,5 @@
-import { FiStar, FiGift, FiHeart, FiTwitter } from "react-icons/fi";
+import { FiStar, FiGift, FiHeart } from "react-icons/fi";
+import { FaXTwitter } from "react-icons/fa6";
 import Link from "next/link";
 
 export default function ComingSoonPage() {
@@ -70,7 +71,7 @@ export default function ComingSoonPage() {
                 className="w-11 h-11 flex items-center justify-center bg-white/5 border border-white/10 rounded-xl text-zinc-400 text-xl transition-all duration-300 hover:bg-white/15 hover:border-white/25 hover:text-white hover:-translate-y-0.5"
                 aria-label="Twitter"
               >
-                <FiTwitter />
+                <FaXTwitter />
               </div>
               <span className="text-zinc-400">@wishcubeapp</span>
             </Link>
