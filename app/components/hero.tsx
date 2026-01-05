@@ -1,45 +1,76 @@
-import React from "react";
-import { GoArrowUpRight } from "react-icons/go";
-import { CiLogin } from "react-icons/ci";
-import Image from "next/image";
+import { PartyPopper } from "lucide-react";
 import Link from "next/link";
+import React from "react";
+import { FaXTwitter } from "react-icons/fa6";
+import { FiGift, FiStar } from "react-icons/fi";
 
 const Hero = () => {
   return (
     <div>
-      <div className=" h-[70vh] flex flex-col justify-center items-center p-4 bg-[#F8F8FF]">
-        <span></span>
-        <h2 className=" text-4xl md:text-5xl font-bold text-center mt-10 mb-5 leading- text-[#1C1C1C]">
-          A Universe of Greetings, Gifts & Virtual Celebrations
-        </h2>
-        <p className="text-center text-lg md:text-xl mb-5 p-1 sm:w-10/12 flex mx-auto">
-          Create personalized greeting cards and websites, send e-gifts, and
-          host unforgettable virtual parties with your loved ones—all in one
-          place.
-        </p>
-        <div className=" gap-2.5 flex justify-center items-center mt-5 mb-10">
-          <Link href="/signup">
-            <button className="flex gap-2 items-center text-[#1C1C1C] border bg-[#F8F8FF] py-2 px-3 rounded-lg hover:bg-[#cfcfcf] transition duration-300 ease-in-out">
-              Get Started <CiLogin className="size-5" />
-            </button>
-          </Link>
-          <Link href="/login">
-            <button className="flex gap-2 items-center bg-[#1C1C1C] text-[#F8F8FF] py-2 px-3 rounded-lg hover:bg-[#2C2C2C] transition duration-300 ease-in-out">
-              Login
-              <GoArrowUpRight className="size-5" />
-            </button>
-          </Link>
+      <main className="relative z-10  mt-4 flex flex-col items-center text-center max-w-[700px] gap-8">
+        <div
+          className="flex flex-col items-center gap-4 animate-fade-in"
+          style={{ animationDelay: "0.1s" }}
+        >
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight">
+            A Universe Where{" "}
+            <span className="bg-gradient-to-r from-white via-zinc-300 to-zinc-500 bg-clip-text text-transparent">
+              Celebration
+            </span>{" "}
+            Feels{" "}
+            <span className="bg-gradient-to-r from-white via-zinc-300 to-zinc-500 bg-clip-text text-transparent">
+              Personal
+            </span>
+          </h2>
         </div>
-      </div>
-      <div className=" p-4 flex justify-center items-center mt-5 mb-10">
-        <Image
-          width={20}
-          height={0}
-          src="/gift.svg"
-          alt="hero"
-          className="md:w-1/3 w-full sm:w-10/12 h-auto object-cover rounded-lg "
-        />
-      </div>
+
+        <div
+          className="flex gap-8 flex-wrap justify-center mt-2 animate-fade-in"
+          style={{ animationDelay: "0.4s" }}
+        >
+          <div className="flex items-center gap-2.5 text-zinc-400 text-sm">
+            <div className="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center text-zinc-300">
+              <FiStar />
+            </div>
+            <span>Create Cards and Website</span>
+          </div>
+
+          <div className="flex items-center gap-2.5 text-zinc-400 text-sm">
+            <div className="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center text-zinc-300">
+              <PartyPopper size={19} />
+            </div>
+            <span>Throw Party</span>
+          </div>
+          <div className="flex items-center gap-2.5 text-zinc-400 text-sm">
+            <div className="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center text-zinc-300">
+              <FiGift />
+            </div>
+            <span>Send and Receive Gift </span>
+          </div>
+        </div>
+
+        {/* Social links */}
+        <div
+          className="flex flex-col items-center gap-4 mt-4 animate-fade-in"
+          style={{ animationDelay: "0.5s" }}
+        >
+          <p className="text-sm text-zinc-500">Follow us on X for updates</p>
+          <div className="flex gap-4">
+            <Link
+              href="https://x.com/wishcubeapp"
+              className="flex items-center gap-2"
+            >
+              <div
+                className="w-11 h-11 flex items-center justify-center bg-white/5 border border-white/10 rounded-xl text-zinc-400 text-xl transition-all duration-300 hover:bg-white/15 hover:border-white/25 hover:text-white hover:-translate-y-0.5"
+                aria-label="Twitter"
+              >
+                <FaXTwitter />
+              </div>
+              <span className="text-zinc-400">@wishcubeapp</span>
+            </Link>
+          </div>
+        </div>
+      </main>
     </div>
   );
 };

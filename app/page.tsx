@@ -1,18 +1,11 @@
-import React from "react";
 import Hero from "./components/hero";
-import Feature from "./components/feature";
-import HowItWorks from "./components/howItWorks";
-import Cta from "./components/cta";
 
-const Page = () => {
+export default function ComingSoonPage() {
   return (
-    <div>
-      <Hero />
-      <Feature />
-      <HowItWorks />
-      <Cta />
+    <div className="">
+      <div className="">
+        <Hero />
+      </div>
     </div>
   );
-};
-
-export default Page;
+}
