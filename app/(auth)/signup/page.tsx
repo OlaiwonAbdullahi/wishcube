@@ -30,11 +30,7 @@ export default function SignUp() {
           </div>
 
           <h1 className="text-3xl sm:text-4xl font-extrabold text-neutral-50 tracking-tight">
-            Create your{" "}
-            <span className="bg-gradient-to-r from-zinc-200 via-zinc-500 to-zinc-200 bg-clip-text text-transparent">
-              WishCube
-            </span>{" "}
-            account
+            Create your account:)
           </h1>
           <p className="text-sm sm:text-base text-neutral-400 leading-relaxed">
             Save your favorite cards, build magical experiences faster, and keep
