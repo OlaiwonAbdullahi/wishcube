@@ -47,18 +47,21 @@ const Hero = () => {
           </p>
         </div>
 
-        {/* CTA Buttons */}
         <div
           className="flex flex-col sm:flex-row gap-4 animate-fade-in"
           style={{ animationDelay: "0.3s" }}
         >
-          <Button
-            size="lg"
-            className="rounded-full px-8 py-6 text-lg font-bold shadow-lg shadow-primary/20 border border-primary/30 bg-gradient-to-br from-zinc-400 to-zinc-500 text-white hover:scale-105 transition-transform hover:shadow-primary/40"
-          >
-            Join Waitlist
-            <ArrowRight className="ml-2 w-5 h-5 text-white" />
-          </Button>
+          <Link href="/login" className="relative group cursor-pointer">
+            <Button
+              size="lg"
+              className="rounded-full  w-fit font-bold p-2 pl-3.5 py-6 text-lg flex justify-between  shadow-lg shadow-primary/20 border-neutral-500/20 border bg-[#151515] text-neutral-300 hover:scale-105 transition-transform"
+            >
+              <div className="mr-2.5">Join Waitlist</div>
+              <div className=" bg-white text-primary rounded-full p-2 flex items-center justify-center">
+                <ArrowRight className="w-5 h-5" />
+              </div>
+            </Button>
+          </Link>
           <Link href="#features">
             <Button
               size="lg"
@@ -70,7 +73,6 @@ const Hero = () => {
           </Link>
         </div>
 
-        {/* Feature Pills */}
         <div
           className="flex gap-6 flex-wrap justify-center mt-4 animate-fade-in"
           style={{ animationDelay: "0.4s" }}
