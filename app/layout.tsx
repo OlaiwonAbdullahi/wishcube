@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import { Afacad } from "next/font/google";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const afacad = Afacad({
   variable: "--font-afacad",
@@ -64,11 +65,14 @@ export default function RootLayout({
             },
           }}
         />
-        <div className="min-h-screen relative flex flex-col items-center justify-around  overflow-hidden bg-[#1A1A1A]">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
 
-          {children}
-        </div>
+        <TooltipProvider>
+          <div className="min-h-screen relative flex flex-col items-center justify-around  overflow-hidden bg-[#1A1A1A]">
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
+
+            {children}
+          </div>
+        </TooltipProvider>
       </body>
     </html>
   );
