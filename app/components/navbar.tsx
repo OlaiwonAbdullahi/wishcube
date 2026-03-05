@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 const Navbar = () => {
   return (
-    <div className="w-3/4 ">
-      <nav className="sticky h-16 flex items-center justify-between px-4 top-0 z-50 border border-neutral-500/20 bg-transparent rounded-full backdrop-blur-md">
+    <div className="w-3/4  ">
+      <nav className="fixed w-3/4  h-16 flex items-center justify-between px-4 top-5 z-50 border border-neutral-500/20 bg-transparent rounded-full backdrop-blur-md">
         <div className="flex items-center gap-3">
           <div className=" w-[150px] h-[50px] flex items-center justify-center">
             <h1 className="text-3xl font-extrabold text-neutral-300 tracking-tight">
@@ -14,26 +15,28 @@ const Navbar = () => {
           </div>
         </div>
         <div className="hidden items-center gap-10 lg:flex">
-          {["HOME", "ABOUT", "HOW IT WORK", "CONTACT"].map((item) => (
-            <a
+          {["HOME", "ABOUT", "FEATURES", "HOW IT WORKS"].map((item) => (
+            <Link
+              href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
               key={item}
-              href={`#${item.toLowerCase()}`}
-              className="text-sm font-semibold text-neutral-400 hover:text-primary transition-colors"
+              className="text-sm font-semibold text-neutral-400 hover:text-neutral-300 transition-colors"
             >
               {item}
-            </a>
+            </Link>
           ))}
         </div>
         <div className="flex items-center gap-3 ">
-          <Button
-            size="lg"
-            className="rounded-full  mx-4 w-[122px] font-bold shadow-lg shadow-primary/20 border-neutral-500/20 border bg-[#151515] text-neutral-300 hover:scale-105 transition-transform"
-          >
-            GET STARTED
-            <div className=" bg-white text-primary rounded-full w-6 h-6 flex items-center justify-center">
-              <ArrowUpRight />
-            </div>
-          </Button>
+          <Link href="/login" className="relative group cursor-pointer">
+            <Button
+              size="lg"
+              className="rounded-full  mx-4 w-fit font-bold pr-1 pl-2   shadow-lg shadow-primary/20 border-neutral-500/20 border bg-[#151515] text-neutral-300 hover:scale-105 transition-transform"
+            >
+              GET STARTED
+              <div className=" bg-white text-primary rounded-full p-2 flex items-center justify-center">
+                <ArrowUpRight />
+              </div>
+            </Button>
+          </Link>
           <div className=""></div>
         </div>
       </nav>
