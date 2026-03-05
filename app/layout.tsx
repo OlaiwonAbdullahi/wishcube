@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import { Afacad } from "next/font/google";
-import Navbar from "./components/navbar";
 
 const afacad = Afacad({
   variable: "--font-afacad",
@@ -10,15 +9,25 @@ const afacad = Afacad({
   weight: ["400", "500", "600", "700"],
 });
 export const metadata: Metadata = {
-  title: "WishCube - Make Your Wishes Come True",
+  title: "WishCube - AI-Powered Greeting Cards & Virtual Celebrations",
   description:
-    "WishCube is a platform where dreams meet reality. Create, share, and fulfill wishes with our community.",
-  keywords: ["wishcube", "wishes", "community", "dreams", "gifts"],
+    "Create personalized AI-powered greeting cards, animated websites, virtual party rooms, and send digital gifts. Share on Instagram, WhatsApp, or email. Make every celebration unforgettable with WishCube.",
+  keywords: [
+    "wishcube",
+    "greeting cards",
+    "AI greeting cards",
+    "virtual party",
+    "digital gifts",
+    "event invitations",
+    "celebration platform",
+    "animated cards",
+    "online celebrations",
+  ],
   authors: [{ name: "WishCube Team" }],
   openGraph: {
-    title: "WishCube - Make Your Wishes Come True",
+    title: "WishCube - AI-Powered Greeting Cards & Virtual Celebrations",
     description:
-      "WishCube is a platform where dreams meet reality. Create, share, and fulfill wishes with our community.",
+      "Create personalized AI-powered greeting cards, animated websites, virtual party rooms, and send digital gifts. Share on Instagram, WhatsApp, or email.",
     type: "website",
   },
 };
@@ -55,16 +64,10 @@ export default function RootLayout({
             },
           }}
         />
-        <div className="min-h-screen relative flex flex-col items-center justify-around p-5 overflow-hidden bg-[#1A1A1A]">
+        <div className="min-h-screen relative flex flex-col items-center justify-around  overflow-hidden bg-[#1A1A1A]">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
-          <Navbar />
+
           {children}
-          <footer
-            className=" z-10 mt-12 text-zinc-600 text-sm animate-fade-in text-center"
-            style={{ animationDelay: "0.6s" }}
-          >
-            <p>© 2026 WishCube. All rights reserved.</p>
-          </footer>
         </div>
       </body>
     </html>
