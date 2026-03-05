@@ -15,7 +15,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="hidden items-center gap-10 lg:flex">
-          {["HOME", "ABOUT", "FEATURES", "HOW IT WORKS"].map((item) => (
+          {["HOME", "ABOUT", "FEATURES"].map((item) => (
             <Link
               href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
               key={item}
