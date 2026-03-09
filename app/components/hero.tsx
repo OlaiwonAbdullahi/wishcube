@@ -11,7 +11,10 @@ const Hero = () => {
       const cal = await getCalApi({ namespace: "demo" });
       cal("ui", {
         theme: "light",
-        cssVarsPerTheme: { light: { "cal-brand": "#9151FF" } },
+        cssVarsPerTheme: {
+          light: { "cal-brand": "#9151FF" },
+          dark: { "cal-brand": "#9151FF" },
+        },
         hideEventTypeDetails: false,
         layout: "month_view",
       });
