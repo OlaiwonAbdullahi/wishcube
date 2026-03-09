@@ -6,24 +6,22 @@ const Footer = () => {
 
   const links = {
     product: [
-      { name: "Features", href: "#features" },
-      { name: "How It Works", href: "#how-it-works" },
       { name: "About", href: "#about" },
+      { name: "Features", href: "#features" },
     ],
     company: [
+      { name: "Contact", href: "#contact" },
       { name: "Privacy Policy", href: "#" },
       { name: "Terms of Service", href: "#" },
-      { name: "Contact", href: "#contact" },
     ],
   };
 
   const socialLinks = [
     {
       icon: <Twitter className="w-5 h-5" />,
-      href: "https://x.com/wishcubeapp",
+      href: "https://x.com/usewishcube",
       label: "X",
     },
-
     {
       icon: <Mail className="w-5 h-5" />,
       href: "mailto:wishcubeapp@gmail.com",
@@ -32,7 +30,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative w-full overflow-hidden py-12 px-6 mt-24">
+    <footer className="relative w-full overflow-hidden p-8 md:p-12 bg-[#191A23] rounded-t-3xl mt-24">
       {/* Background Effects */}
       <div aria-hidden className="absolute top-0 left-0 w-full h-full " />
       <div
@@ -42,7 +40,7 @@ const Footer = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8">
           {/* Brand Section */}
           <div className="space-y-4">
             <h3 className="text-2xl font-extrabold text-white tracking-tight">
@@ -114,7 +112,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
           <p className="text-zinc-500 text-sm">
             © {currentYear} WishCube. All rights reserved.
           </p>
