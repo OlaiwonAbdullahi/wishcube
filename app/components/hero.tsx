@@ -1,103 +1,67 @@
-import { PartyPopper, Sparkles, ArrowRight } from "lucide-react";
-import React from "react";
-import { FiGift, FiStar } from "react-icons/fi";
+"use client";
+
+import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import Image from "next/image";
+import { getCalApi } from "@calcom/embed-react";
 
 const Hero = () => {
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({ namespace: "demo" });
+      cal("ui", {
+        theme: "light",
+        cssVarsPerTheme: {
+          light: { "cal-brand": "#9151FF" },
+          dark: { "cal-brand": "#9151FF" },
+        },
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    })();
+  }, []);
+
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center relative">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" />
-        <div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: "2s" }}
-        />
+    <div
+      className="flex flex-col md:flex-row justify-between items-center min-h-[60vh] md:min-h-[90vh] gap-8 md:gap-12 mx-auto px-4 sm:px-8 md:px-12 lg:px-[100px] pt-8 md:pt-12"
+      style={{
+        backgroundImage: `url("https://www.transparenttextures.com/patterns/asfalt-dark.png")`,
+      }}
+    >
+      <div className="w-full md:w-1/2 flex flex-col gap-5 md:gap-6 text-center md:text-left items-center md:items-start">
+        <h1 className="font-medium text-[40px] sm:text-[50px] md:text-[60px] leading-tight">
+          Create Magical <br />
+          Moments <br className="hidden sm:block" /> That Last Forever
+        </h1>
+        <p className="w-full sm:w-[80%] text-gray-600 leading-relaxed text-sm md:text-base">
+          AI-powered greeting cards, websites, virtual party rooms, and seamless
+          gifting all in one platform. Make every celebration unforgettable.
+        </p>
+        <div className="flex items-center gap-3 md:gap-4 flex-wrap justify-center md:justify-start">
+          <Button size="lg" className="bg-[#191A23] cursor-not-allowed">
+            Join Waitlist
+          </Button>
+          <Button
+            size="lg"
+            className="cursor-pointer rounded-md px-4 w-fit bg-transparent border border-black text-black hover:text-white"
+            data-cal-namespace="demo"
+            data-cal-link="usewishcube/demo"
+            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"light"}'
+          >
+            Request Demo
+          </Button>
+        </div>
       </div>
 
-      <main className="relative z-10 mt-4 flex flex-col items-center justify-center text-center max-w-4xl gap-6 px-6">
-        <div
-          className="flex flex-col items-center gap-6 animate-fade-in"
-          style={{ animationDelay: "0.1s" }}
-        >
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
-            <Sparkles className="w-4 h-4 text-primary text-zinc-300" />
-            <span className="text-sm font-semibold text-zinc-300">
-              AI-Powered Celebrations
-            </span>
-          </div>
-
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-16 tracking-tight">
-            Create{" "}
-            <span className="bg-gradient-to-r from-zinc-200 via-zinc-500 to-zinc-200 bg-clip-text text-transparent">
-              Magical
-            </span>{" "}
-            Moments That{" "}
-            <span className="bg-gradient-to-r from-zinc-200 via-zinc-500 to-zinc-200 bg-clip-text text-transparent">
-              Last Forever
-            </span>
-          </h1>
-
-          <p className="text-xl text-zinc-400 max-w-2xl leading-tight">
-            AI-powered greeting cards, animated websites, virtual party rooms,
-            and seamless gifting all in one platform. Make every celebration
-            unforgettable.
-          </p>
-        </div>
-
-        <div
-          className="flex flex-col sm:flex-row gap-4 animate-fade-in"
-          style={{ animationDelay: "0.3s" }}
-        >
-          <Link href="/login" className="relative group cursor-pointer">
-            <Button
-              size="lg"
-              className="rounded-full  w-fit font-bold p-2 pl-3.5 py-6 text-lg flex justify-between  shadow-lg shadow-primary/20 border-neutral-500/20 border bg-[#151515] text-neutral-300 hover:scale-105 transition-transform"
-            >
-              <div className="mr-2.5">Join Waitlist</div>
-              <div className=" bg-white text-primary rounded-full p-2 flex items-center justify-center">
-                <ArrowRight className="w-5 h-5" />
-              </div>
-            </Button>
-          </Link>
-          <Link href="#features">
-            <Button
-              size="lg"
-              variant="outline"
-              className="rounded-full px-8 py-6 text-lg font-bold border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white hover:scale-105 transition-transform"
-            >
-              Learn More
-            </Button>
-          </Link>
-        </div>
-
-        <div
-          className="flex gap-6 flex-wrap justify-center mt-4 animate-fade-in"
-          style={{ animationDelay: "0.4s" }}
-        >
-          <div className="flex items-center gap-2.5 text-zinc-400 text-sm px-4 py-2 rounded-full bg-white/5 border border-white/10">
-            <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-zinc-300">
-              <FiStar className="w-4 h-4" />
-            </div>
-            <span>Greeting Cards & Websites</span>
-          </div>
-
-          <div className="flex items-center gap-2.5 text-zinc-400 text-sm px-4 py-2 rounded-full bg-white/5 border border-white/10">
-            <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-zinc-300">
-              <PartyPopper size={16} />
-            </div>
-            <span>Virtual Parties</span>
-          </div>
-          <div className="flex items-center gap-2.5 text-zinc-400 text-sm px-4 py-2 rounded-full bg-white/5 border border-white/10">
-            <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-zinc-300">
-              <FiGift className="w-4 h-4" />
-            </div>
-            <span>Digital Gifts</span>
-          </div>
-        </div>
-      </main>
+      <div className="flex w-1/2 justify-end items-center">
+        <Image
+          src={"/hero.svg"}
+          alt="Wishcube Hero Image"
+          height={200}
+          width={200}
+          className="w-full max-w-[500px]"
+        />
+      </div>
     </div>
   );
 };

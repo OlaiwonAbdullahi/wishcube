@@ -4,90 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Primary Colors - Purple/Violet theme for wishes/magic */
-  --primary-50: #faf5ff;
-  --primary-100: #f3e8ff;
-  --primary-200: #e9d5ff;
-  --primary-300: #d8b4fe;
-  --primary-400: #c084fc;
-  --primary-500: #a855f7;
-  --primary-600: #9333ea;
-  --primary-700: #7e22ce;
-  --primary-800: #6b21a8;
-  --primary-900: #581c87;
-
-  /* Accent Colors - Teal/Cyan for complementary accents */
-  --accent-50: #ecfeff;
-  --accent-100: #cffafe;
-  --accent-200: #a5f3fc;
-  --accent-300: #67e8f9;
-  --accent-400: #22d3ee;
-  --accent-500: #06b6d4;
-  --accent-600: #0891b2;
-  --accent-700: #0e7490;
-  --accent-800: #155e75;
-  --accent-900: #164e63;
-
-  /* Neutral Colors */
-  --neutral-50: #fafafa;
-  --neutral-100: #f4f4f5;
-  --neutral-200: #e4e4e7;
-  --neutral-300: #d4d4d8;
-  --neutral-400: #a1a1aa;
-  --neutral-500: #71717a;
-  --neutral-600: #52525b;
-  --neutral-700: #3f3f46;
-  --neutral-800: #27272a;
-  --neutral-900: #18181b;
-
-  /* Semantic Colors */
-  --success: #10b981;
-  --warning: #f59e0b;
-  --error: #ef4444;
-  --info: #3b82f6;
-
-  /* Gradients */
-  --gradient-primary: linear-gradient(
-    135deg,
-    var(--primary-500),
-    var(--primary-700)
-  );
-  --gradient-accent: linear-gradient(
-    135deg,
-    var(--accent-500),
-    var(--primary-500)
-  );
-  --gradient-magic: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
-  --gradient-dark: linear-gradient(
-    135deg,
-    var(--neutral-800),
-    var(--neutral-900)
-  );
-
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1),
-    0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --shadow-glow: 0 0 20px rgba(168, 85, 247, 0.3);
-  --shadow-glow-accent: 0 0 20px rgba(6, 182, 212, 0.3);
-
-  /* Border Radius */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-full: 9999px;
-
-  /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-base: 250ms ease;
-  --transition-slow: 350ms ease;
-
   /* Font */
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -122,38 +39,8 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-/* Dark mode variables */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --card-bg: var(--neutral-800);
-    --card-border: var(--neutral-700);
-  }
-}
-
-/* Light mode variables */
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: var(--neutral-50);
-    --foreground: var(--neutral-900);
-    --card-bg: white;
-    --card-border: var(--neutral-200);
-  }
-}
-
-* {
-  margin: 0;
-  box-sizing: border-box;
-}
-
 html {
   scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--font-afacad), Arial, Helvetica, sans-serif;
-  background-color: var(--background);
-  line-height: 1.6;
-  min-height: 100vh;
 }
 
 /* Custom scrollbar */
@@ -341,12 +228,11 @@ body {
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
+.font-space {
+  font-family: "Space Grotesk";
+}
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/fonts/SpaceGrotesk.ttf");
 }

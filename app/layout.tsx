@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
-import { Afacad } from "next/font/google";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import Navbar from "./components/navbar";
 
-const afacad = Afacad({
-  variable: "--font-afacad",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
 export const metadata: Metadata = {
   title: "WishCube - AI-Powered Greeting Cards & Virtual Celebrations",
   description:
@@ -38,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={afacad.variable}>
+    <html lang="en">
       <body className="antialiased font-sans">
         <Toaster
           position="top-right"
@@ -64,11 +60,16 @@ export default function RootLayout({
             },
           }}
         />
-        <div className="min-h-screen relative flex flex-col items-center justify-around  overflow-hidden bg-[#1A1A1A]">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
 
-          {children}
-        </div>
+        <TooltipProvider>
+          <div className="bg-white font-space min-h-screen flex flex-col">
+            <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100 px-4 sm:px-8 md:px-12 lg:px-[100px]">
+              <Navbar />
+            </header>
+
+            <main className="flex-1 w-full max-w-[1400px] ">{children}</main>
+          </div>
+        </TooltipProvider>
       </body>
     </html>
   );
