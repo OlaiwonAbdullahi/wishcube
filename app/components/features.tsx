@@ -9,7 +9,7 @@ const Features = () => {
     <div className="w-full">
       <div className="flex flex-col gap-8 md:gap-15">
         <Heading
-          title="Our Features"
+          title="Core Features"
           description="Everything you need to create, share, and celebrate; cards, virtual parties, digital gifts, and smart invitations, all in one place."
         />
 

@@ -13,7 +13,7 @@ const Page = () => {
           <Hero />
         </section>
       </div>
-      <div className="flex flex-col gap-24 mx-auto px-4 sm:px-8 md:px-12 lg:px-[100px] pt-8 md:pt-12">
+      <div className="flex flex-col md:gap-24 gap-10 mx-auto px-4 sm:px-8 md:px-12 lg:px-[100px] pt-8 md:pt-12">
         <section id="about">
           <About />
         </section>
