@@ -7,7 +7,7 @@ import React from "react";
 const Features = () => {
   return (
     <div className="w-full">
-      <div className="flex flex-col gap-8 md:gap-10">
+      <div className="flex flex-col gap-8 md:gap-15">
         <Heading
           title="Our Features"
           description="Everything you need to create, share, and celebrate; cards, virtual parties, digital gifts, and smart invitations, all in one place."

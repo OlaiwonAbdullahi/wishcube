@@ -23,15 +23,11 @@ const Navbar = () => {
             {item}
           </Link>
         ))}
-        <Button
-          size="lg"
-          className="cursor-pointer rounded-md px-4 w-fit bg-transparent border border-black text-black hover:bg-black hover:text-white transition-colors"
-        >
-          Request Demo
+        <Button size="lg" className="bg-[#191A23] cursor-not-allowed">
+          Join Waitlist
         </Button>
       </div>
 
-      {/* Mobile: show CTA only */}
       <div className="flex lg:hidden">
         <Button
           size="sm"
