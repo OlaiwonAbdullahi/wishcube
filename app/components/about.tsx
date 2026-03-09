@@ -3,7 +3,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="flex flex-col gap-15 py-15">
+    <div className="flex flex-col md:gap-15 gap-8 py-15">
       <Heading
         title="Our Story"
         description="How a simple idea about human connection became a platform that makes every celebration unforgettable."

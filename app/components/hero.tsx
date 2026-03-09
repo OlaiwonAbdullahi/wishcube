@@ -23,7 +23,7 @@ const Hero = () => {
 
   return (
     <div
-      className="flex flex-col md:flex-row justify-between items-center min-h-[60vh] md:min-h-[90vh] gap-8 md:gap-12 mx-auto px-4 sm:px-8 md:px-12 lg:px-[100px] pt-8 md:pt-12"
+      className="flex flex-col md:flex-row justify-between items-center min-h-[70vh] md:min-h-[90vh] gap-8 md:gap-12 mx-auto px-4 sm:px-8 md:px-12 lg:px-[100px] pt-8 md:pt-12"
       style={{
         backgroundImage: `url("https://www.transparenttextures.com/patterns/asfalt-dark.png")`,
       }}
@@ -53,7 +53,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="flex w-1/2 justify-end items-center">
+      <div className="flex md:w-1/2 justify-end items-center">
         <Image
           src={"/hero.svg"}
           alt="Wishcube Hero Image"
