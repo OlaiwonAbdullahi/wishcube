@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import { Mail, Twitter } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -38,7 +41,13 @@ const Footer = () => {
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-zinc-900/10 rounded-full blur-[150px] opacity-30 pointer-events-none"
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="relative z-10 max-w-7xl mx-auto"
+      >
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8">
           {/* Brand Section */}
@@ -98,14 +107,19 @@ const Footer = () => {
             </h4>
             <div className="flex gap-4">
               {socialLinks.map((social, index) => (
-                <a
+                <motion.a
                   key={index}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-10 h-10 rounded-full backdrop-blur-md bg-white/[0.08] border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/[0.12] hover:border-white/20 transition-all duration-300 hover:scale-110"
+                  whileHover={{
+                    scale: 1.1,
+                    backgroundColor: "rgba(255, 255, 255, 0.12)",
+                  }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-10 h-10 rounded-full backdrop-blur-md bg-white/[0.08] border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-300"
                 >
                   {social.icon}
-                </a>
+                </motion.a>
               ))}
             </div>
           </div>
@@ -120,7 +134,7 @@ const Footer = () => {
             Made with <span className="text-white">♥</span> for celebrations
           </p>
         </div>
-      </div>
+      </motion.div>
     </footer>
   );
 };
