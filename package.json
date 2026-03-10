@@ -23,6 +23,7 @@
     "clsx": "^2.1.1",
     "express": "^5.1.0",
     "firebase": "^11.7.3",
+    "framer-motion": "^12.35.2",
     "html-to-image": "^1.11.13",
     "lucide-react": "^0.562.0",
     "mongodb": "^6.17.0",
