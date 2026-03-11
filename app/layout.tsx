@@ -101,6 +101,12 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="Rv-NiTAoaufBnGm8e0q72l86yshESLvmQCcsdcWyYoI"
+        />
+      </head>
       <body className="antialiased font-sans">
         <script
           type="application/ld+json"
