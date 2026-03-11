@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const Navbar = () => {
   return (
@@ -11,19 +12,18 @@ const Navbar = () => {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="h-16 flex items-center justify-between w-full max-w-7xl mx-auto px-4"
+      className="h-20 flex items-center justify-between w-full max-w-7xl mx-auto px-4"
     >
-      {/* Logo */}
       <motion.div
         whileHover={{ scale: 1.05 }}
-        className="flex items-center cursor-pointer"
+        className="flex items-center cursor-pointer gap-2"
       >
-        <h1 className="text-2xl md:text-3xl text-black tracking-tight font-bold">
+        <Image src={"/logo.svg"} alt="Logo" width={45} height={45} />
+        <h1 className="text-xl md:text-2xl text-black tracking-tight font-bold">
           WishCube
         </h1>
       </motion.div>
 
-      {/* Nav links — hidden on mobile, visible from lg up */}
       <div className="hidden lg:flex items-center gap-10">
         <div className="flex items-center gap-10">
           {["About", "Features", "Pricing"].map((item, index) => (

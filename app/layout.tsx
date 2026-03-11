@@ -5,26 +5,72 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Navbar from "./components/navbar";
 
 export const metadata: Metadata = {
-  title: "WishCube - AI-Powered Greeting Cards & Virtual Celebrations",
+  metadataBase: new URL("https://usewishcube.com"),
+  title: {
+    default: "WishCube | AI-Powered Greeting Cards & Virtual Celebrations",
+    template: "%s | WishCube",
+  },
   description:
-    "Create personalized AI-powered greeting cards, animated websites, virtual party rooms, and send digital gifts. Share on Instagram, WhatsApp, or email. Make every celebration unforgettable with WishCube.",
+    "Transform your celebrations with AI. Create personalized greeting cards,websites, virtual party rooms, and send digital gifts. Join the future of digital gifting.",
   keywords: [
     "wishcube",
-    "greeting cards",
     "AI greeting cards",
-    "virtual party",
-    "digital gifts",
-    "event invitations",
-    "celebration platform",
-    "animated cards",
-    "online celebrations",
+    "digital celebrations",
+    "virtual party rooms",
+    "personalized digital gifts",
+    "online birthday cards",
+    "interactive e-cards",
+    "AI event invitations",
+    "animated celebration websites",
+    "virtual event platform",
   ],
-  authors: [{ name: "WishCube Team" }],
+  authors: [{ name: "WishCube Team", url: "https://usewishcube.com" }],
+  creator: "WishCube",
+  publisher: "WishCube",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
-    title: "WishCube - AI-Powered Greeting Cards & Virtual Celebrations",
+    title: "WishCube | AI-Powered Greeting Cards & Virtual Celebrations",
     description:
-      "Create personalized AI-powered greeting cards, animated websites, virtual party rooms, and send digital gifts. Share on Instagram, WhatsApp, or email.",
+      "Transform your celebrations with AI. Create personalized greeting cards, websites, and virtual party rooms.",
+    url: "https://usewishcube.com",
+    siteName: "WishCube",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "WishCube - AI-Powered Celebrations",
+      },
+    ],
+    locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "WishCube | AI-Powered Greeting Cards & Virtual Celebrations",
+    description:
+      "Transform your celebrations with AI. Create personalized greeting cards, animated websites, and virtual party rooms.",
+    site: "@usewishcube",
+    creator: "@usewishcube",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://usewishcube.com",
   },
 };
 
@@ -33,9 +79,33 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "WishCube",
+    description:
+      "AI-Powered Greeting Cards & Virtual Celebrations. Create personalized cards, virtual party rooms, and send digital gifts.",
+    url: "https://usewishcube.com",
+    applicationCategory: "Celebration & Gifting",
+    operatingSystem: "All",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+    author: {
+      "@type": "Organization",
+      name: "WishCube",
+    },
+  };
+
   return (
     <html lang="en">
       <body className="antialiased font-sans">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Toaster
           position="top-right"
           toastOptions={{
@@ -63,7 +133,7 @@ export default function RootLayout({
 
         <TooltipProvider>
           <div className="bg-white font-space min-h-screen flex flex-col">
-            <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100 px-4 sm:px-8 md:px-12 lg:px-[100px]">
+            <header className="sticky top-0 z-50 bg-white/40 backdrop-blur-sm border-b border-gray-100 px-4 sm:px-8 md:px-12 lg:px-[100px]">
               <Navbar />
             </header>
 
