@@ -3,6 +3,7 @@
 import React from "react";
 import { Mail, Twitter } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -34,7 +35,6 @@ const Footer = () => {
 
   return (
     <footer className="relative w-full overflow-hidden p-8 md:p-12 bg-[#191A23] rounded-t-3xl mt-24">
-      {/* Background Effects */}
       <div aria-hidden className="absolute top-0 left-0 w-full h-full " />
       <div
         aria-hidden
@@ -48,13 +48,17 @@ const Footer = () => {
         transition={{ duration: 0.8 }}
         className="relative z-10 max-w-7xl mx-auto"
       >
-        {/* Main Footer Content */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8">
-          {/* Brand Section */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-extrabold text-white tracking-tight">
-              WishCube
-            </h3>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center cursor-pointer "
+            >
+              <Image src={"/logo.png"} alt="Logo" width={70} height={70} />
+              <h1 className="text-xl md:text-2xl text-white tracking-tight font-bold">
+                WishCube
+              </h1>
+            </motion.div>
             <p className="text-zinc-400 text-sm leading-relaxed max-w-xs">
               Creating magical moments through AI-powered celebrations and
               digital gifting.
