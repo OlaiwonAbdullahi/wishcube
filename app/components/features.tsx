@@ -81,7 +81,7 @@ const Features = () => {
             <div className="flex flex-col justify-between gap-6">
               <CardsTitle
                 firstText="Share"
-                secondText="With Loved Ones"
+                secondText="Gift With Loved Ones"
                 bg="#fff"
                 text="#191A23"
               />
