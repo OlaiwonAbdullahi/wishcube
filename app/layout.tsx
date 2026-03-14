@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Navbar from "./components/navbar";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://usewishcube.com"),
   title: {
-    default: "WishCube | AI-Powered Greeting Cards & Virtual Celebrations",
+    default:
+      "WishCube | AI-Powered Greeting Cards and website & Virtual Celebrations",
     template: "%s | WishCube",
   },
   description:
@@ -33,7 +34,8 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "WishCube | AI-Powered Greeting Cards & Virtual Celebrations",
+    title:
+      "WishCube | AI-Powered Greeting Cards and Website & Virtual Celebrations",
     description:
       "Transform your celebrations with AI. Create personalized greeting cards, websites, and virtual party rooms.",
     url: "https://usewishcube.com",
@@ -51,7 +53,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "WishCube | AI-Powered Greeting Cards & Virtual Celebrations",
+    title:
+      "WishCube | AI-Powered Greeting Cards and Website & Virtual Celebrations",
     description:
       "Transform your celebrations with AI. Create personalized greeting cards, animated websites, and virtual party rooms.",
     site: "@usewishcube",
@@ -106,36 +109,14 @@ export default function RootLayout({
           name="google-site-verification"
           content="Rv-NiTAoaufBnGm8e0q72l86yshESLvmQCcsdcWyYoI"
         />
+        <title>Wishcube</title>
       </head>
       <body className="antialiased font-sans">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <Toaster
-          position="top-right"
-          toastOptions={{
-            duration: 4000,
-            style: {
-              background: "#1f2937",
-              color: "#f9fafb",
-              borderRadius: "12px",
-              padding: "16px",
-            },
-            success: {
-              iconTheme: {
-                primary: "#10b981",
-                secondary: "#f9fafb",
-              },
-            },
-            error: {
-              iconTheme: {
-                primary: "#ef4444",
-                secondary: "#f9fafb",
-              },
-            },
-          }}
-        />
+        <Toaster position="top-right" richColors />
 
         <TooltipProvider>
           <div className="bg-white font-space min-h-screen flex flex-col">
