@@ -73,7 +73,7 @@ const Hero = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ name, email }),
-        }
+        },
       );
       const result = await response.json();
       if (result.status === "success") {
@@ -82,13 +82,17 @@ const Hero = () => {
         setName("");
         setEmail("");
       } else {
-        toast.error(result.message);
+        toast.error(
+          "An error occurred Prolly Internet. Please check your internet connection and try again.",
+        );
         setName("");
         setEmail("");
       }
     } catch (error) {
       console.log("Error joining waitlist:", error);
-      toast.error("An error occurred. Please try again.");
+      toast.error(
+        "An error occurred Prolly Internet. Please check your internet connection and try again.",
+      );
     } finally {
       setLoading(false);
     }
