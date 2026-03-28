@@ -124,7 +124,9 @@ export default function RootLayout({
               <Navbar />
             </header>
 
-            <main className="flex-1 w-full max-w-[1400px] ">{children}</main>
+            <main className="flex-1 w-full max-w-[1400px] mx-auto ">
+              {children}
+            </main>
           </div>
         </TooltipProvider>
       </body>
