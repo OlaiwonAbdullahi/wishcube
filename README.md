@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WishCube Landing page
+
+Wishcube is a platform for creating greeting cards, Pages(website), virtual party rooms, and integrating gifting. Make every celebration unforgettable.
+
+---
+
+## 🛠️ Technology Stack
+
+WishCube is built with a modern stack for a premium user experience:
+
+- **Framework**: [Next.js 15+](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS 4+](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Scheduling**: [Cal.com](https://cal.com/) Integration
+- **Icons**: [Lucide React](https://lucide.dev/) & [Tabler Icons](https://tabler-icons.io/)
+- **Components**: [Radix UI](https://www.radix-ui.com/) (Shadcn UI)
+
+---
 
 ## Getting Started
 
-First, run the development server:
+To get a local copy up and running, follow these simple steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Node.js 20+
+- npm or yarn
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1.  **Clone the repository**:
 
-## Learn More
+    ```bash
+    git clone https://github.com/OlaiwonAbdullahi/wishcube.git
+    cd wishcube
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+2.  **Install dependencies**:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    ```bash
+    npm install
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3.  **Run the development server**:
 
-## Deploy on Vercel
+    ```bash
+    npm run dev
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4.  **Open the application**:
+    Navigate to [http://localhost:3000](http://localhost:3000) in your browser.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+<p align="center">
+  Built with ❤️ by Abdullahi
+</p>
