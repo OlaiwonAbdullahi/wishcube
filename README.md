@@ -4,7 +4,7 @@ Wishcube is a platform for creating greeting cards, Pages(website), virtual part
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 WishCube is built with a modern stack for a premium user experience:
 
